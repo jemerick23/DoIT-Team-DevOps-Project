@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoIT Sign Up</title>
+    <link rel="stylesheet" href="DoIT_SignUp_Screen.css">
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+        <script src="DoIT_canvas.js"></script>
+
+<div id = "sign-up-screen">
+    <h1>DoIT</h1>
+    <h2>A Team Task and Project Collaboration Platform</h2>
+    <h3>Sign up to continue</h3>
+
+    <label>
+        <input type = "text" placeholder="Name">
+    </label>
+    <br>
+    <label>
+        <input type = "text" placeholder="Username">
+    </label>
+    <br>
+    <label>
+        <input type = "password" placeholder="Password">
+    </label>
+    <div class = "header-row">
+        <div class = "remember-container">
+        <input type = "checkbox" id="remember">
+        <label for="remember">Remember me</label>
+        </div>
+        <div class = "sign-in-link">
+        <label>Already have an account?</label>
+        <a href = "DoIT_Login_Screen.html">Sign In</a>
+        </div>
+    </div>
+    <br>
+    <div class = "button-container">
+    <button class = "sign-up-button" onclick="window.location.href='DoIT_Login_Screen.html'">Sign Up</button>
+    </div>
+    <div class = "social-signup">
+        <span>Or sign up with</span>
+
+        <div class="social-links">
+            <a href="https://www.google.com" target="_blank">Google</a>
+
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+
+        </div>
+    </div>
+</div>
