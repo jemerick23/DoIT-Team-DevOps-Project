@@ -1,0 +1,291 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.sidebar {
+    width: 55px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2c3e50;
+    color: white;
+    overflow: hidden;
+    transition: width 0.3s;
+}
+
+.sidebar.open {
+  width: 250px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 20px 16px;
+}
+
+.main-content h1 {
+  font-size: 32px;
+}
+
+.welcome {
+  margin-left: 50px;
+}
+
+.sidebar-header h2 {
+  font-size: 30px;
+  margin-left: 70px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+}
+
+.sidebar.open .sidebar-header h2 {
+  opacity: 1;
+  visibility: visible;
+}
+
+.openbtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 34px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sidebar-content {
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+  padding: 25px 16px;
+  transition: opacity 0.2s;
+}
+
+.sidebar.open .sidebar-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-section {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 35px 0 15px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 0;
+  margin-left: 28px;
+}
+
+.sidebar a.active {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Open button */
+.openbtn {
+    background: none;
+    border: none;
+    color: white;
+    padding: 0;
+    position: fixed;
+    font-size: 34px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.openbtn:hover {
+    background-color: #34495e;
+}
+
+#main {
+    transition: margin-left 0.3s;
+    padding: 20px;
+    padding-right: 280px;
+    margin-left: 250px;
+}
+
+.main-content {
+    margin-left: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.main.full {
+    margin-left: 0;
+}
+
+.square-tasks {
+    width: 650px;
+    height: 350px;
+    background-color: lightgrey;
+    margin-left: 50px;
+    display: inline-block;
+    border-radius: 10px;
+    color: black;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.square-roles {
+    width: 570px;
+    height: 350px;
+    background-color: lightgrey;
+    margin-left: 730px;
+    display: inline-block;
+    border-radius: 10px;
+    color: black;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -350px;
+}
+
+.square-progress-and-activity {
+    width: 1250px;
+    height: 250px;
+    background-color: lightgrey;
+    margin-left: 50px;
+    display: inline-block;
+    border-radius: 10px;
+    color: black;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.square-progress-and-activity h3 {
+    margin-bottom: 160px;
+}
+
+.square-tasks h3 {
+    margin-bottom: 250px;
+}
+
+.square-roles h3 {
+    margin-bottom: 250px;
+}
+
+.search-bar {
+    width: 500px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-left: 50px;
+    margin-top: -50px;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  white-space: nowrap;
+}
+
+.profile-header {
+  margin-left: 0px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+}
+
+.profile-info {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.circle-profile-picture {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #bdc3c7;
+  flex-shrink: 0;
+  margin-left: 150px;
+  position: fixed;
+  margin-top: 90px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  position: fixed;
+  margin-top: 20px;
+}
+
+.occupation {
+  font-size: 14px;
+  font-weight: bold;
+  position: fixed;
+  margin-top: 65px;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 99px;
+    align-items: center;
+    margin-right: -600px;
+}
+
+.action-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: -60px;
+}
+
+.icon-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    border: 1px solid #d9d9d9;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 6px;
+}
+
+.icon-circle i {
+    font-size: 18px;
+    color: black;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoIT Dashboard</title>
+    <link rel="stylesheet" href="DoIT_Dashboard.css">
+</head>
+    <body>
+        <script src="DoIT_Dashboard.js"></script>
+
+    <!--Sidebar-->
+        <div id="mySidebar" class="sidebar open">
+            <div class="sidebar-header">
+                <button class="openbtn" onclick="toggleSidebar()">☰</button>
+                <h2>DoIT</h2>
+            </div>
+        
+            <div class="sidebar-content">
+                <p class="sidebar-section">Menu</p>
+                <a href="#dashboard" class="active">Dashboard</a>
+                <a href="#calendar">Calendar</a>
+                <a href="#tasks">Tasks</a>
+                <a href="#profile">Profile</a>
+
+                <p class="sidebar-section">Collaboration</p>
+                <a href="#team-messages">✉ Team Messages</a>
+                <a href="#view-team-members">👤 View Team members</a>
+
+                <p class="sidebar-section">Support</p>
+                <a href="#settings">⚙ Settings</a>
+            </div>
+        </div>
+
+    <!--Main Content-->
+        <div id="main" class="main-content">
+            <div class="top-header">
+                <h1 class="welcome">Dashboard</h1>
+
+                <div class="profile-actions">
+                    <button class="action-button">
+                        <div class="icon-circle">
+                            <i class="comment-dots"></i>
+                        </div>
+                            <span>Chat</span>
+                    </button>
+
+                    <button class="action-button">
+                        <div class="icon-circle">
+                            <i class="bell"></i>
+                        </div>
+                        <span>Alerts/Notifications</span>
+                    </button>
+                </div>
+
+
+                <div class="profile-header">
+                    <div class = "profile-info">
+                    <h1 class="name">Name: </h1>
+                    <p class="occupation" font-weight="bold">Occupation: </p>
+                    </div>
+
+                    <span class="circle-profile-picture"></span>
+                </div>
+            </div>
+
+                <label>
+                    <input type="search" placeholder="🔍 Type to search..." class="search-bar">
+                </label>
+
+                <div class="square-tasks">
+                    <h3>Tasks</h3>
+                    <p></p>
+                </div>
+
+                <div class="square-roles">
+                    <h3>Roles</h3>
+                    <p></p>
+                </div>
+
+                <div class="square-progress-and-activity">
+                    <h3>Project Progress and Activity</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
