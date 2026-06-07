@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Check Project') {
+            steps {
+                echo 'Jenkins is working!'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat 'npm test'
+            }
+        }
+    }
+}
