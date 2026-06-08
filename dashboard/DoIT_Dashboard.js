@@ -23,7 +23,6 @@ if (sidebar.classList.contains("open")){ //<--This format the sidebar when open
     }else{
         sidebar.style.width = "90px";
         main.style.marginLeft = "90px";
-        toggle.style.left = "105px";
         closeSidebar();
     }
 }
