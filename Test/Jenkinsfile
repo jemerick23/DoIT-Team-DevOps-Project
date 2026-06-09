@@ -2,16 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Check Project') {
+        stage('Intall Dependencies') {
             steps {
-                echo 'Jenkins is working!'
+                bat 'npm install'
+                bat 'npx playwright install --with-deps chromium'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'npm test'
+                bat 'npm run test:ci'
             }
+        }
+    }
+
+    post {
+        always {
+            junit 'test-results/*.xml'
+            archiveArtifacts artifacts 'playwright-report/**', allowEmptyArchive: true
         }
     }
 }
