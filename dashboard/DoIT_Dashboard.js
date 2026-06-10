@@ -27,6 +27,67 @@ if (sidebar.classList.contains("open")){ //<--This format the sidebar when open
     }
 }
 
+//This will load dashboard tasks
+
+let allTasks = [];
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const res = await fetch("/api/tasks");
+    allTasks = await res.json();
+
+    loadTasks();
+    renderStatusBoard();
+});
+
+function loadTasks() {
+    const taskList = document.getElementById("dashboardTaskList");
+
+    taskList.innerHTML = "";
+
+    allTasks.forEach(task => {
+        const div = document.createElement("div");
+
+        div.className = "dashboard-task";
+
+        div.innerHTML = `
+            <strong>${task.title}</strong><br>
+            Assigned: ${task.assigned_to}
+        `;
+
+        taskList.appendChild(div);
+    });
+}
+
+function renderStatusBoard() {
+    const container = document.querySelector(".square-progress-and-activity");
+
+    const grouped = {};
+
+    allTasks.forEach(task => {
+        if (!grouped[task.status]) {
+            grouped[task.status] = [];
+        }
+        grouped[task.status].push(task);
+    });
+
+    container.innerHTML = "<h3>Project Progress and Activity</h3>";
+
+    Object.keys(grouped).forEach(status => {
+        const section = document.createElement("div");
+
+        section.innerHTML = `
+            <h4>${status}</h4>
+            <ul>
+                ${grouped[status]
+                    .map(t => `<li>${t.title} (${t.priority})</li>`)
+                    .join("")}
+            </ul>
+        `;
+
+        container.appendChild(section);
+    });
+}
+
 //  DOIT ASSISTANT
 
 
