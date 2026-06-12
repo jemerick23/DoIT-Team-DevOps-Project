@@ -19,6 +19,8 @@ const taskPriority = document.getElementById("taskPriority");
 const taskDueDate = document.getElementById("taskDueDate");
 const addTaskButton = document.getElementById("addTaskButton");
 const taskList = document.getElementById("taskList");
+const taskMessage = document.getElementById("taskMessage");
+const taskCounter = document.getElementById("taskCounter");
 
 
 document.addEventListener("DOMContentLoaded", loadTasks);
@@ -27,6 +29,8 @@ async function loadTasks() {
     const tasks = await getTasks();
 
     taskList.innerHTML = "";
+
+    taskCounter.textContent = `Total Tasks: ${tasks.length}`;
 
     tasks.forEach(createTaskCard);
 }
@@ -40,7 +44,7 @@ function createTaskCard(task) {
     taskCard.innerHTML = `
         <h3>${task.title}</h3>
         <p><strong>Priority:</strong> ${task.priority}</p>
-        <p><strong>Due Date:</strong> ${task.dueDate}</p>
+        <p><strong>Due Date:</strong> ${task.due_date || task.dueDate}</p>
         <p>${task.description}</p>
         <button class="deleteTaskButton">Delete Task</button>
     `;
