@@ -125,81 +125,7 @@ body {
 .main.full {
     margin-left: 0;
 }
-/* square-tasks format */
-.square-tasks {
-    width: 650px;
-    height: 350px;
-    background-color: lightgrey;
-    margin-left: 50px;
-    border-radius: 10px;
-    color: black;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    overflow-y: auto;
-    margin-top: 20px;
-    box-sizing: border-box;
-    
-}
-/* square-roles format */
-.square-roles {
-    width: 570px;
-    height: 350px;
-    background-color: lightgrey;
-    margin-left: 730px;
-    border-radius: 10px;
-    color: black;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    overflow-y: auto;
-    margin-top: -350px;
-    box-sizing: border-box;
-}
-/* square-progress-and-activity format */
-.square-progress-and-activity {
-    width: 1250px;
-    height: 250px;
-    background-color: lightgrey;
-    margin-left: 50px;
-    display: inline-block;
-    border-radius: 10px;
-    color: black;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    overflow-y: auto;
-    margin-top: 50px;
-    box-sizing: border-box;
-}
-/* square-progress-and-activty h3 format */
-.square-progress-and-activity h3 {
-    margin-bottom: 45px;
-}
-/* square-tasks h3 format */
-.square-tasks h3 {
-    margin-bottom: 50px;
-}
-/* square-roles h3 format */
-.square-roles h3 {
-    margin-bottom: 15px;
-}
-/* search-bar h3 format */
-.search-bar {
-    width: 500px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    margin-left: 50px;
-    margin-top: -50px;
-}
+
 /* top-header format */
 .top-header {
   display: flex;
@@ -255,11 +181,26 @@ body {
     margin-right: -600px;
 }
 
-/*
-   DOIT FLOATING ASSISTANT
-*/
-
-
+.square-roles {
+    width: 600px;
+    height: 550px;
+    background-color: lightgrey;
+    margin-left: 30px;
+    border-radius: 10px;
+    color: black;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    overflow-y: auto;
+    margin-top: 50px;
+    box-sizing: border-box;
+}
+/* square-roles h3 format */
+.square-roles h3 {
+    margin-bottom: 15px;
+}
 #assistant-btn {
   position: fixed;
   bottom: 20px;

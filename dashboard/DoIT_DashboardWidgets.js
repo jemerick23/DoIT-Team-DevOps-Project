@@ -37,10 +37,19 @@ function loadTasks() {
 
 function renderRoleBoard() {
     const container = document.getElementById("roleList");
+    
+    const teamRoles = {
+    1: "Project Manager",
+    2: "Developer",
+    3: "Database Designer",
+    4: "Tester",
+    5: "Stakeholder"
+    };
 
     const grouped = {};
     allTasks.forEach(task => {
-        const role = task.assigned_to || "Unassigned";
+        console.log("Assigned To:", task.assigned_to);
+        const role = teamRoles[task.assigned_to] || "Unassigned";
         if (!grouped[role]) grouped[role] = [];
         grouped[role].push(task);
     });

@@ -9,34 +9,22 @@ document.addEventListener(
     }
 );
 
-function openSidebar() { //<--This allows the sidebar to open
-    document.getElementById("mySidebar").style.width = "240px";
-    document.getElementById("mySidebar").classList.add("open");
-}
-
-function closeSidebar() { //<--This allows the sidebar to close
-    document.getElementById("mySidebar").style.width = "90px";
-    document.getElementById("mySidebar").classList.remove("open");
-}
-
 function toggleSidebar() { //<--This allows users to open and close using the toggle button
+    console.log("Sidebar clicked");
     const sidebar = document.getElementById("mySidebar");
     const main = document.getElementById("main");
     sidebar.classList.toggle("open");
 
-
-if (sidebar.classList.contains("open")){ //<--This format the sidebar when open
-    sidebar.style.width = "240px";
-    main.style.marginLeft = "240px";
-    sidebar.classList.add("open");
-    openSidebar();
-    
+    if (sidebar.classList.contains("open")){ //<--This formats the sidebar when open
+        sidebar.style.width = "240px";
+        if (main) main.style.marginLeft = "240px";
     }else{
-        sidebar.style.width = "90px";
-        main.style.marginLeft = "90px";
-        closeSidebar();
+        sidebar.style.width = "90px"; //<-- This formats the sidebar when closed
+        if (main) main.style.marginLeft = "90px";
     }
 }
+
+window.toggleSidebar = toggleSidebar; //<--This is a global reference to the toggleSidebar function.
 
 //  DOIT ASSISTANT
 

@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoIT Dashboard</title>
-    <link rel="stylesheet" href="DoIT_Dashboard.css">
+    <link rel="stylesheet" href="DoIT_Settings.css">
 </head>
     <body>
-        
     <!--Sidebar-->
         <div id="mySidebar" class="sidebar open">
             <div class="sidebar-header">
@@ -17,6 +16,7 @@
         
             <div class="sidebar-content">
                 <p class="sidebar-section">Menu</p>
+                <a href="#dashboard" class="active" onclick="window.location.href='../dashboard/DoIT_Dashboard.html'">Dashboard</a>
                 <a href="#calendar">Calendar</a>
                 <a href="#tasks" onclick="window.location.href='../tasks/DoIT_Task_Screen.html'">Tasks</a>
                 <a href="#logout" onclick="window.location.href='../auth/DoIT_Login_Screen.html'">Logout</a>
@@ -25,15 +25,13 @@
                 <a href="#team-messages" onclick="window.location.href='../teams/DoIT_teamMessages.html'">✉ Team Messages</a>
                 <a href="#view-team-members" onclick="window.location.href='../teams/DoIT_teamMembers.html'">👤 View Team members</a>
 
-                <p class="sidebar-section">Support</p>
-                <a href="#settings" onclick="window.location.href='../settings/DoIT_Settings.html'">⚙ Settings</a>
             </div>
         </div>
 
-    <!--Main Content-->
+         <!--Main Content-->
         <div id="main" class="main-content">
             <div class="top-header">
-                <h1 class="welcome">Dashboard</h1>
+                <h1 class="welcome">Settings</h1>
 
                 <div class="profile-header">
                     <div class = "profile-info">
@@ -45,26 +43,6 @@
                 </div>
             </div>
 
-                <label>
-                    <input type="search" placeholder="🔍 Type to search..." class="search-bar">
-                </label>
-
-                <div class="square-tasks">
-                    <h3>Tasks</h3>
-                    <div id="dashboardTaskList"></div>
-                </div>
-
-                <div class="square-roles">
-                    <h3>Roles</h3>
-                    <div id ="roleList"></div>
-                </div>
-
-                <div class="square-progress-and-activity">
-                    <h3>Project Progress and Activity</h3>
-                    <div id = "progressList"></div>
-                </div>
-            </div>
-        </div>
         <!-- DOIT AI ASSISTANT-->
 
 <!-- Floating Button -->
@@ -88,7 +66,6 @@
     </div>
 
 </div>
-
 
 <script type="module" src="DoIT_Dashboard.js"></script>
     </body>
