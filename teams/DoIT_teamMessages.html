@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoIT Team Messages</title>
-    <link rel="stylesheet" href="DoIT_teams.css">
+    <link rel="stylesheet" href="DoIT_teamMembers.css">
 </head>
     <body>
     <!--Sidebar-->
@@ -44,6 +44,20 @@
                     <span class="circle-profile-picture"></span>
                 </div>
             </div>
+        </div>
+
+        <!--Messages-->
+
+        <div class ="message-container">
+
+            <h2>Team Messages</h2>
+
+            <div id="messageFeed"></div>
+
+            <textarea id="messageInput" placeholder="Type message..."></textarea>
+
+            <button id="sendMessageBtn">Send</button>
+        </div>
 
         <!-- DOIT AI ASSISTANT-->
 
@@ -69,6 +83,7 @@
 
 </div>
 
-<script type="module" src="DoIT_Dashboard.js"></script>
+<script type="module" src="DoIT_teamMessages.js"></script>
+<script type="module" src="../dashboard/DoIT_Dashboard.js"></script>
     </body>
 </html>

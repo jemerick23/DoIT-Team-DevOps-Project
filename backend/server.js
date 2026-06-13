@@ -4,6 +4,7 @@ const db = require("./db");
 const authRoutes = require("./routes/auth");
 const taskRoutes = require("./routes/tasks.js");
 const roleRoutes = require("./routes/teamMembers.js");
+const messageRoutes = require("./routes/teamMessages.js");
 const app = express();
 
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/teamMembers", require("./routes/teamMembers"));
+app.use("/api/teamMessages", require("./routes/teamMessages"));
 
 // Test route (optional)
 app.get("/", (req, res) => {

@@ -134,6 +134,14 @@ CREATE TABLE audit_log (
         ON DELETE SET NULL
 );
 
+CREATE TABLE messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
 INSERT INTO roles (role_name, description) VALUES
 ('Project Manager', 'Coordinates project work, timelines, and team communication.'),
 ('Developer', 'Builds and maintains application features.'),
@@ -204,6 +212,14 @@ INSERT INTO audit_log
 VALUES
 ('projects', 1, 'CREATE', 1, 'Initial DoIT project record created.'),
 ('tasks', 1, 'CREATE', 1, 'Initial database schema task created.');
+
+INSERT INTO messages
+(user_id, message)
+VALUES
+(1, 'Finished database schema'),
+(2, 'Finished building user login workflow'),
+(3, 'Finished agile poker printout'),
+(4, 'Writing notes are written');
 
 -- Useful report query: all project tasks with assigned users
 SELECT 

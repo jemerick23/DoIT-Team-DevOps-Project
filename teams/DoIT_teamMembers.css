@@ -201,6 +201,26 @@ body {
 .square-roles h3 {
     margin-bottom: 15px;
 }
+
+
+.message-container{
+  width: 350px;
+  height: 350px;
+  margin-left: 300px;
+}
+
+.messageInput {
+  width: 350px;
+  height: 350px;
+}
+
+.sendMessageBtn {
+  color:#2c3e50;
+  padding: 5px;
+  display: flex;
+}
+
+/* DoIT Assistant */
 #assistant-btn {
   position: fixed;
   bottom: 20px;
