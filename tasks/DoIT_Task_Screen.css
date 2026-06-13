@@ -116,3 +116,31 @@ textarea {
     margin-top: 15px;
     background-color: white;
 }
+
+/* Validation Messages */
+
+.error-message {
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: #4caf50;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Priority Styling */
+
+.high-priority {
+    border-left: 6px solid red;
+}
+
+.medium-priority {
+    border-left: 6px solid orange;
+}
+
+.low-priority {
+    border-left: 6px solid green;
+}

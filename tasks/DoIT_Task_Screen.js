@@ -40,6 +40,17 @@ async function loadTasks() {
 function createTaskCard(task) {
 
     const taskCard = document.createElement("div");
+    taskCard.classList.add("task-card");
+
+    if (task.priority === "High") {
+        taskCard.classList.add("high-priority");
+    }
+    else if (task.priority === "Medium") {
+        taskCard.classList.add("medium-priority");
+    }
+    else {
+        taskCard.classList.add("low-priority");
+    }
 
     taskCard.innerHTML = `
         <h3>${task.title}</h3>
@@ -77,13 +88,16 @@ addTaskButton.addEventListener("click", async function () {
 
     // Basic validation
 
+    taskMessage.textContent = "";
+
     if (
         title === "" ||
         description === "" ||
         priority === "" ||
         dueDate === ""
     ) {
-        alert("Please complete all fields.");
+        taskMessage.textContent = "Please complete all task fields before creating a task.";
+        taskMessage.className = "error-message";
         return;
     }
 
@@ -100,6 +114,9 @@ addTaskButton.addEventListener("click", async function () {
     };
 
     await createTask(taskData);
+
+    taskMessage.textContent = "Task created successfully!";
+    taskMessage.className = "success-message";
 
     // Clear form after task creation
 
