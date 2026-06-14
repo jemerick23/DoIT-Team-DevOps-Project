@@ -16,25 +16,15 @@
     <h2>A Team Task and Project Collaboration Platform</h2>
     <h3>Sign up to continue</h3>
 
-    <form>
-        <input type = "text" placeholder="Name">
-    </form>
+    <input id="first_name" type="text" placeholder="First Name">
     <br>
-    <form>
-        <input type = "text" placeholder="Email">
-    </form>
+    <input id="last_name" type="text" placeholder="Last Name">
     <br>
-    <form>
-        <input type = "text" placeholder="Role (optional)">
-    </form>
+    <input id="email" type="text" placeholder="Email">
     <br>
-    <form>
-        <input type = "text" placeholder="Username">
-    </form>
+    <input id="role" type="text" placeholder="Role (optional)">
     <br>
-    <form>
-        <input type = "password" placeholder="Password">
-    </form>
+    <input id="password" type="password" placeholder="Password">
     <div class = "header-row">
         <div class = "remember-container">
         <input type = "checkbox" id="remember">
@@ -47,7 +37,7 @@
     </div>
     <br>
     <div class = "button-container">
-    <button class = "sign-up-button" onclick="window.location.href='DoIT_Login_Screen.html'">Sign Up</button>
+    <button class="sign-up-button" id="signupBtn">Sign Up</button>
     </div>
     <div class = "social-signup">
         <span>Or sign up with</span>
@@ -62,5 +52,7 @@
         </div>
     </div>
 </div>
+
+<script type="module" src="./DoIT_SignUp.js"></script>
 </body>
 </html>

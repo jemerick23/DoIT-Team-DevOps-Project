@@ -1,50 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>DoIT Login</title>
-    <link rel="stylesheet" href="DoIT_Login_Screen.css">
-</head>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DoIT Login</title>
+        <link rel="stylesheet" href="DoIT_Login_Screen.css">
+    </head>
 
-<body>
-    <canvas id="myCanvas"></canvas>
-        <script src="DoIT_canvas.js"></script>
+    <body>
+        <canvas id="myCanvas"></canvas>
+            <script src="DoIT_canvas.js"></script>
 
-<div id = "login-screen">
-    <h1>DoIT</h1>
-    <h2>A Team Task and Project Collaboration Platform</h2>
-    <h3>Welcome! Please log in to your account.</h3>
+        <div id = "login-screen">
+            <h1>DoIT</h1>
+            <h2>A Team Task and Project Collaboration Platform</h2>
+            <h3>Welcome! Please log in to your account.</h3>
 
-    <label>
-        <input type = "text" placeholder="Username">
-    </label>
-    <br>
-    <label>
-        <input type = "password" placeholder="Password">
-    </label>
-    <div class = "header-row">
-        <div class = "remember-container">
-        <input type = "checkbox" id="remember">
-        <label for="remember">Remember me</label>
+            <label>
+                <input id="email" type = "text" placeholder="Email">
+            </label>
+            <br>
+            <label>
+                <input id="password" type = "password" placeholder="Password">
+            </label>
+            <div class = "header-row">
+                <div class = "remember-container">
+                <input type = "checkbox" id="remember">
+                <label for="remember">Remember me</label>
+                </div>
+                <a href = "DoIT_ForgotPassword_Screen.html">Forgot Password?</a>
+            </div>
+            <br>
+            <div class = "button-container">
+            <button class = "login-button" id="loginBtn">Login</button>
+            <button class = "sign-up-button" onclick="window.location.href='DoIT_SignUp_Screen.html'">Sign Up</button>
+            </div>
+            <div class = "social-login">
+                <span>Or log in with</span>
+
+                <div class="social-links">
+                    <a href="https://www.google.com" target="_blank">Google</a>
+
+                    <a href="https://www.facebook.com" target="_blank">Facebook</a>
+
+                    <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                </div>
+            </div>
         </div>
-        <a href = "DoIT_ForgotPassword_Screen.html">Forgot Password?</a>
-    </div>
-    <br>
-    <div class = "button-container">
-    <button class = "login-button" onclick="window.location.href='../dashboard/DoIT_Dashboard.html'">Login</button>
-    <button class = "sign-up-button" onclick="window.location.href='DoIT_SignUp_Screen.html'">Sign Up</button>
-    </div>
-    <div class = "social-login">
-        <span>Or log in with</span>
 
-        <div class="social-links">
-            <a href="https://www.google.com" target="_blank">Google</a>
-
-            <a href="https://www.facebook.com" target="_blank">Facebook</a>
-
-            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-        </div>
-    </div>
-</div>
-</body>
+        <script type="module" src="./DoIT_Login.js"></script>
+    </body>
 </html>
