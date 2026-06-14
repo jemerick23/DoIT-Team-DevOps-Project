@@ -3,76 +3,44 @@ const router = express.Router();
 const db = require("../db");
 const bcrypt = require("bcrypt");
 
-router.post("/signup", async (req, res) => {
-    const {
-        first_name,
-        last_name,
-        email,
-        password,
-        role_id
-    } = req.body;
+console.log("AUTH ROUTES LOADED");
 
-    if (!email || !password) {
-        return res.status(400).json({
-            message: "Email and password are required"
-        });
+router.post("/signup", (req, res) => {
+    const { first_name, last_name, email, password, role_id } = req.body;
+
+    if (!first_name || !last_name || !email || !password) {
+        return res.status(400).json({ message: "Missing fields" });
     }
 
-    try {
-        // 1. Check if user already exists
-        const checkUserSql =
-            "SELECT * FROM users WHERE email = ?";
+    const checkSql = "SELECT * FROM users WHERE email = ?";
 
-        db.query(checkUserSql, [email], async (err, results) => {
-            if (err) {
-                return res.status(500).json(err);
-            }
+    db.query(checkSql, [email], async (err, results) => {
+        if (err) return res.status(500).json(err);
 
-            if (results.length > 0) {
-                return res.status(400).json({
-                    message: "User already exists"
+        if (results.length > 0) {
+            return res.status(400).json({ message: "User already exists" });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const insertSql = `
+            INSERT INTO users (first_name, last_name, email, password_hash, role_id)
+            VALUES (?, ?, ?, ?, ?)
+        `;
+
+        db.query(insertSql,
+            [first_name, last_name, email, hashedPassword, role_id || null],
+            (err, result) => {
+                if (err) return res.status(500).json(err);
+
+                res.json({
+                    success: true,
+                    message: "User created successfully",
+                    user_id: result.insertId
                 });
             }
-
-            // 2. Hash password
-            const hashedPassword = await bcrypt.hash(password, 10);
-
-            // 3. Insert user
-            const insertSql = `
-                INSERT INTO users 
-                (first_name, last_name, email, password_hash, role_id)
-                VALUES (?, ?, ?, ?, ?)
-            `;
-
-            db.query(
-                insertSql,
-                [
-                    first_name,
-                    last_name,
-                    email,
-                    hashedPassword,
-                    role_id || null
-                ],
-                (err, result) => {
-                    if (err) {
-                        return res.status(500).json(err);
-                    }
-
-                    return res.json({
-                        success: true,
-                        message: "User created successfully",
-                        user_id: result.insertId
-                    });
-                }
-            );
-        });
-
-    } catch (error) {
-        return res.status(500).json({
-            message: "Server error",
-            error
-        });
-    }
+        );
+    });
 });
 
 router.post("/login", (req, res) => {
@@ -92,10 +60,11 @@ router.post("/login", (req, res) => {
 
     db.query(sql, [email], async (err, results) => {
         if (err) {
-            return res.status(500).json(err);
+            console.error("DB ERROR:", err);
+            return res.status(500).json({ message: "Database error" });
         }
 
-        if (results.length === 0) {
+        if (!results || results.length === 0) {
             return res.status(401).json({
                 success: false,
                 message: "Invalid credentials"
@@ -104,27 +73,43 @@ router.post("/login", (req, res) => {
 
         const user = results[0];
 
-        // Compare password
-        const isMatch = await bcrypt.compare(
-            password,
-            user.password_hash
-        );
-
-        if (!isMatch) {
-            return res.status(401).json({
-                success: false,
-                message: "Invalid credentials"
+        if (!user.password_hash) {
+            console.error("Missing password_hash for user:", user);
+            return res.status(500).json({
+                message: "User password not set correctly in database"
             });
         }
 
-        // Don't send password back
-        delete user.password_hash;
+        console.log("LOGIN RESULTS:", results);
+        console.log("USER:", user);
+        console.log("PASSWORD HASH:", user.password_hash);
 
-        return res.json({
-            success: true,
-            message: "Login successful",
-            user
-        });
+        try {
+            const isMatch = await bcrypt.compare(password, user.password_hash);
+
+            console.log("MATCH:", isMatch);
+
+            if (!isMatch) {
+                return res.status(401).json({
+                    success: false,
+                    message: "Invalid credentials"
+                });
+            }
+
+            delete user.password_hash;
+
+            return res.json({
+                success: true,
+                message: "Login successful",
+                user
+            });
+
+        } catch (error) {
+            console.error("BCRYPT ERROR:", error);
+            return res.status(500).json({
+                message: "Authentication error"
+            });
+        }
     });
 });
 

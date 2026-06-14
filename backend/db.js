@@ -1,4 +1,5 @@
 const mysql = require("mysql2");
+require("dotenv").config();
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -6,7 +7,7 @@ const db = mysql.createConnection({
     password: "Jesus2026$",
     database: "doit_project"
 });
-
+ 
 // Connect once at startup
 db.connect((err) => {
     if (err) {
