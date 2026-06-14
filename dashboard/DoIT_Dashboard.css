@@ -210,16 +210,17 @@ body {
 }
 /* profile-header format */
 .profile-header {
-  margin-left: 0px;
+  margin-right: -200px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  width: fit-content;
+  gap: 20px;
+  justify-content: space-between;
 }
 /* profile-info format */
 .profile-info {
-  text-align: right;
-  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 /* circle-profile-picture format */
 .circle-profile-picture {
@@ -228,9 +229,6 @@ body {
   border-radius: 50%;
   background-color: #bdc3c7;
   flex-shrink: 0;
-  margin-left: 150px;
-  position: fixed;
-  margin-top: 90px;
 }
 /* name format */
 .name {

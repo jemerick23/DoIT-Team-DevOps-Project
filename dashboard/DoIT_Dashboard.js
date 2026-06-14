@@ -6,6 +6,25 @@ document.addEventListener(
     () => {
 
         initializeDashboardWidgets();
+
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (user) {
+
+            document.getElementById("userName").textContent =
+                `Welcome: ${user.first_name} ${user.last_name}`;
+
+            const roles = {
+                1: "Project Manager",
+                2: "Developer",
+                3: "Database Designer",
+                4: "Tester",
+                5: "Stakeholder"
+            };
+
+            document.getElementById("userOccupation").textContent =
+                `Occupation: ${roles[user.role_id] || "Team Member"}`;
+        }
     }
 );
 

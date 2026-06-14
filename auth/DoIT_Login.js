@@ -12,6 +12,8 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
 
         if (result.success) {
 
+        localStorage.setItem("user", JSON.stringify(result.user));
+
         alert("Login successful!");
 
         window.location.href = "../dashboard/DoIT_Dashboard.html";
