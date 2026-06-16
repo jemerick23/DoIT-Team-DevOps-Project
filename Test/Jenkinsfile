@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    stage('Show Scripts') {
+        steps {
+            bat 'npm run'
+        }
+    }
+
     stages {
         stage('Verify Node') {
             steps {
@@ -17,7 +23,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'npm test'
+                bat 'cd Test && npm test'
             }
         }
 
