@@ -12,6 +12,16 @@ router.post("/signup", (req, res) => {
         return res.status(400).json({ message: "Missing fields" });
     }
 
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email.trim())) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid email format"
+        });
+    }
+
     const checkSql = "SELECT * FROM users WHERE email = ?";
 
     db.query(checkSql, [email], async (err, results) => {
@@ -67,7 +77,7 @@ router.post("/login", (req, res) => {
         if (!results || results.length === 0) {
             return res.status(401).json({
                 success: false,
-                message: "Invalid credentials"
+                message: "Incorrect email or password"
             });
         }
 

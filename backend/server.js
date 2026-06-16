@@ -5,6 +5,7 @@ const authRoutes = require("./routes/auth.js");
 const taskRoutes = require("./routes/tasks.js");
 const roleRoutes = require("./routes/teamMembers.js");
 const messageRoutes = require("./routes/teamMessages.js");
+const settingsRoutes = require("./routes/settings");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
@@ -30,6 +31,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/teamMembers", roleRoutes);
 app.use("/api/teamMessages", messageRoutes);
+app.use("/api/settings", settingsRoutes);
 app.use("/uploads", express.static("uploads"));
 
 // Test route (optional)

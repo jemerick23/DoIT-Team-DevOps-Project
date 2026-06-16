@@ -1,0 +1,170 @@
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f4f8;
+      color: #333;
+    }
+    .calendar-container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-radius: 10px;
+    }
+    h1 {
+      margin: 0 0 15px;
+      font-size: 26px;
+      text-align: center;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .header button {
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      background: #0078d4;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .header button:hover {
+      background: #005a9e;
+    }
+    .header #monthYear {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .weekday-row,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .weekday-row div,
+    .day-cell {
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .weekday-row div {
+      font-weight: 700;
+      background: #e9edf5;
+    }
+    .day-cell {
+      min-height: 100px;
+      background: #f9fbfd;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .day-cell:hover {
+      background: #eef4ff;
+      border-color: #c8d7f5;
+    }
+    .day-cell.inactive {
+      color: #aaa;
+      background: #f5f7fb;
+      cursor: default;
+    }
+    .day-number {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .task-count {
+      margin-top: auto;
+      font-size: 13px;
+      color: #555;
+    }
+    .task-panel {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      width: 320px;
+      max-height: calc(100vh - 40px);
+      padding: 18px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 10;
+    }
+    .task-panel.active {
+      display: flex;
+    }
+    .task-panel h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .task-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 260px;
+      overflow-y: auto;
+      border: 1px solid #e1e7f0;
+      border-radius: 8px;
+      background: #f9fbfd;
+    }
+    .task-list li {
+      padding: 10px;
+      border-bottom: 1px solid #e1e7f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .task-list li:last-child {
+      border-bottom: none;
+    }
+    .task-list li button {
+      border: none;
+      background: none;
+      color: #ff5c5c;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .task-input-row {
+      display: flex;
+      gap: 8px;
+    }
+    .task-input-row input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #cfd8e8;
+      border-radius: 8px;
+      outline: none;
+    }
+    .task-input-row button {
+      border: none;
+      padding: 10px 14px;
+      background: #0078d4;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .task-input-row button:hover {
+      background: #005a9e;
+    }
+    .close-button {
+      border: none;
+      padding: 8px 12px;
+      background: #d1d9e6;
+      color: #333;
+      border-radius: 8px;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+    .close-button:hover {
+      background: #b0b9c9;
+    }

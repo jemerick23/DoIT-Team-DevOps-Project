@@ -145,6 +145,17 @@ CREATE TABLE messages (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE user_settings (
+    user_id INT PRIMARY KEY,
+    theme VARCHAR(20) DEFAULT 'light',
+    notifications BOOLEAN DEFAULT TRUE,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    occupation VARCHAR(100),
+    allow_tracking BOOLEAN DEFAULT FALSE,
+    data_sharing BOOLEAN DEFAULT FALSE
+);
+
 INSERT INTO roles (role_name, description) VALUES
 ('Project Manager', 'Coordinates project work, timelines, and team communication.'),
 ('Developer', 'Builds and maintains application features.'),

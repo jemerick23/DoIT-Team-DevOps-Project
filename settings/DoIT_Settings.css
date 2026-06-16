@@ -1,6 +1,29 @@
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --card: #ffffff;
+  --sidebar: #2c3e50;
+  --sidebar-text: white;
+  --accent: #4a90e2;
+  --input-border: #ccc;
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #eaeaea;
+  --card: #1e1e1e;
+  --sidebar: #1b1b1b;
+  --sidebar-text: #eaeaea;
+  --accent: #4a90e2;
+  --input-border: #333;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    background: var(--bg);
+    color: var(--text);
 }
 /* Sidebar format */
 .sidebar {
@@ -9,8 +32,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #2c3e50;
-    color: white;
+    background-color: var(--sidebar);
+    color: var(--sidebar-text);
     overflow: hidden;
     transition: width 0.3s;
 }
@@ -73,7 +96,7 @@ body {
 /* Sidebar a format */
 .sidebar a {
   display: block;
-  color: white;
+  color: var(--sidebar-text);
   text-decoration: none;
   font-size: 16px;
   padding: 6px 0;
@@ -137,16 +160,17 @@ body {
 }
 /* profile-header format */
 .profile-header {
-  margin-left: 0px;
+  margin-right: -200px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  width: fit-content;
+  gap: 20px;
+  justify-content: space-between;
 }
 /* profile-info format */
 .profile-info {
-  text-align: right;
-  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 /* circle-profile-picture format */
 .circle-profile-picture {
@@ -155,9 +179,6 @@ body {
   border-radius: 50%;
   background-color: #bdc3c7;
   flex-shrink: 0;
-  margin-left: 150px;
-  position: fixed;
-  margin-top: 90px;
 }
 /* name format */
 .name {
@@ -182,76 +203,92 @@ body {
     margin-right: -600px;
 }
 
-/*Settings page formatting */
-:root[data-theme="light"] {
-    --bg: #fff;
-    --fg: #111;
-    --card: #f7f7f8;
+/* Settings Container */
+.settings-container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-:root[data-theme="dark"] {
-    --bg: #121212;
-    --fg: #e9e9e9;
-    --card: #1e1e1e;
+/* Section Headings */
+.settings-container h2 {
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 8px;
 }
 
-.doit-settings {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    padding: 20px;
-    max-width: 700px;
-
-    margin: 0 auto;
+/* Labels */
+.settings-container label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
 }
 
-.ds-section {
-    background: var(--card);
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
-
-.ds-section h2 {
-    margin: 0 0 8px 0;
-    font-size: 16px;
-}
-
-.ds-field {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 8px;
-}
-
-.ds-field input[type="text"] {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.ds-checkbox {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.ds-checkbox input {
-    width: 16px;
-    height: 16px;
-}
-
-.ds-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.ds-btn {
-    padding: 8px 12px;
+/* Text Inputs and Select Menus */
+.settings-container input[type="text"],
+.settings-container select,
+.settings-container input[type="first_name"],
+.settings-container input[type="last_name"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--input-border);
     border-radius: 6px;
-    border: 0;
-    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 14px;
 }
+
+/* Focus Effect */
+.settings-container input:focus,
+.settings-container select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+/* Checkboxes */
+.settings-container input[type="checkbox"] {
+    margin-right: 8px;
+    margin-top: 10px;
+}
+
+/* Checkbox Labels */
+.settings-container input[type="checkbox"] + label {
+    display: inline;
+    font-weight: normal;
+}
+
+/* Save Button */
+#saveBtn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#saveBtn:hover {
+    background-color: #34495e;
+}
+
+/* Message Area */
+.message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: green;
+}
+
 
 /*Assistant formatting*/
 #assistant-btn {

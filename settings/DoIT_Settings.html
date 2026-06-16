@@ -35,12 +35,50 @@
 
                 <div class="profile-header">
                     <div class = "profile-info">
-                    <h1 class="name">Name: </h1>
-                    <p class="occupation" font-weight="bold">Occupation: </p>
+                    <h1 id="userName">Welcome: </h1>
+                    <p id="userOccupation" font-weight="bold">Occupation: </p>
                     </div>
 
                     <span class="circle-profile-picture"></span>
                 </div>
+            </div>
+
+            <div class="settings-container">
+                <h2>General Settings</h2>
+                <br>
+                <label for="theme">Theme:</label>
+                <select id="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+                <br>
+                <label for="notifications">Enable Notifications:</label>
+                <select id="notifications">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                <br>
+                <br>
+                <h2>Profile Settings</h2>
+                <label for="first_name">First Name:</label>
+                <input id="first_name" type="text" placeholder="Enter your first name">
+                <br>
+                <label for="last_name">Last Name:</label>
+                <input id="last_name" type="text" placeholder="Enter your last name">
+                <br>
+                <label for="role">Occupation:</label>
+                <input id="role" type="text" placeholder="Enter your occupation">
+                <br>
+                <h2>Privacy settings</h2>
+                <input type="checkbox" id="allow-tracking" name="allow-tracking" value="allow-tracking">
+                    <label for="allow-tracking">Allow tracking</label>
+                <br>
+                <input type="checkbox" id="data-sharing" name="data-sharing" value="data-sharing">
+                <label for="data-sharing">Allow data sharing</label>
+                <br>
+                <br>
+                <button id="saveBtn">Save Settings</button>
+                <div class="message" id="message"></div>
             </div>
 
         <!-- DOIT AI ASSISTANT-->
@@ -67,7 +105,7 @@
 
         </div>
 
-        <script type="module" src="DoIT_Settings.js"></script>
+        <script src="DoIT_settings.js"></script>
         <script type="module" src="../dashboard/DoIT_Dashboard.js"></script>
     </body>
 </html>
