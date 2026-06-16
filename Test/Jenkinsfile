@@ -22,14 +22,14 @@ pipeline {
                 bat 'node -e "setTimeout(() => {}, 5000)"'
             }
         }
-        
+
         stage('Unit Tests') {
             steps {
-                bat 'npm test'
+                bat 'npm run test:unit'
             }
         }
 
-        stage('Install Playwright Browsers') {
+        stage('Install Playwright') {
             steps {
                 bat 'npx playwright install --with-deps'
             }
@@ -37,7 +37,7 @@ pipeline {
 
         stage('E2E Tests') {
             steps {
-                bat 'npm run e2e'
+                bat 'npm run test:e2e'
             }
         }
 
