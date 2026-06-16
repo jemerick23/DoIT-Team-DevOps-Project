@@ -1,16 +1,29 @@
 pipeline {
     agent any
 
-    stages 
-        stage('Run Server') {
+    stages {
+        stage('Verify Node') {
             steps {
-                bat 'start /B node server.js'
+                bat 'node -v'
+                bat 'npm -v'
             }
         }
 
-        stage('Verify') {
+        stage('Install Dependencies') {
             steps {
-                bat 'curl http://localhost:3000'
+                bat 'npm install'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat 'npm test'
+            }
+        }
+
+        stage('Build Successful') {
+            steps {
+                bat 'echo DoIT Pipeline Passed'
             }
         }
     }
