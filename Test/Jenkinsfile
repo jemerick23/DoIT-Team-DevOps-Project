@@ -10,21 +10,34 @@ pipeline {
             }
         }
 
-        stage('Show Scripts') {
-            steps {
-                bat 'npm run'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
             }
         }
 
-        stage('Run Tests') {
+        stage('Start Backend') {
             steps {
-                bat 'cd Test && npm test'
+                bat 'start /B node backend/server.js'
+                bat 'timeout /t 5'
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                bat 'npm test'
+            }
+        }
+
+        stage('Install Playwright Browsers') {
+            steps {
+                bat 'npx playwright install --with-deps'
+            }
+        }
+
+        stage('E2E Tests') {
+            steps {
+                bat 'npm run e2e'
             }
         }
 

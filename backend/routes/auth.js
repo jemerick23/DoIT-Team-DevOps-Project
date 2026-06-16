@@ -9,7 +9,9 @@ router.post("/signup", (req, res) => {
     const { first_name, last_name, email, password, role_id } = req.body;
 
     if (!first_name || !last_name || !email || !password) {
-        return res.status(400).json({ message: "Missing fields" });
+        return res.status(400).json({ 
+            success: false,
+            message: "Missing fields" });
     }
 
     // Email validation
@@ -28,7 +30,9 @@ router.post("/signup", (req, res) => {
         if (err) return res.status(500).json(err);
 
         if (results.length > 0) {
-            return res.status(400).json({ message: "User already exists" });
+            return res.status(400).json({ 
+                success: false,
+                message: "User already exists" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);

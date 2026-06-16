@@ -5,7 +5,7 @@ document.getElementById("signupBtn").addEventListener("click", async () => {
     const first_name = document.getElementById("first_name").value.trim();
     const last_name = document.getElementById("last_name").value.trim();
     const email = document.getElementById("email").value.trim();
-    const role = document.getElementById("role").value;
+    const role_id = document.getElementById("role").value;
     const password = document.getElementById("password").value;
 
     console.log("Signup JS loaded");
@@ -27,7 +27,7 @@ document.getElementById("signupBtn").addEventListener("click", async () => {
         last_name,
         email,
         password,
-        role
+        role_id
     });
 
     console.log("SIGNUP RESULT:", result);
