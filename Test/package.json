@@ -4,7 +4,8 @@
   "description": "Team project repository for the DoIT task and project collaboration platform developed for COM 430 Software Engineering.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "start": "node backend/server.js",
+    "test": "jest login.test.js"
   },
   "repository": {
     "type": "git",
