@@ -1,4 +1,12 @@
 {
+  "name": "doit-team-devops-project",
+  "version": "1.0.0",
+  "description": "Team project repository for the DoIT task and project collaboration platform developed for COM 430 Software Engineering.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "test:e2e": "playwright test e2e/signup.spec.js"
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
@@ -7,5 +15,25 @@
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.1.1",
     "mysql2": "^3.22.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jemerick23/DoIT-Team-DevOps-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jemerick23/DoIT-Team-DevOps-Project/issues"
+  },
+  "homepage": "https://github.com/jemerick23/DoIT-Team-DevOps-Project#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "jest": "^30.4.2"
   }
 }
+
+
+
+

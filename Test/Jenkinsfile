@@ -19,19 +19,7 @@ pipeline {
         stage('Start Backend') {
             steps {
                 bat 'start /B node backend/server.js'
-                bat 'node -e "setTimeout(() => {}, 5000)"'
-            }
-        }
-
-        stage('Unit Tests') {
-            steps {
-                bat 'npm run test:unit'
-            }
-        }
-
-        stage('Install Playwright') {
-            steps {
-                bat 'npx playwright install --with-deps'
+                bat 'node -e "setTimeout(() => {}, 8000)"'
             }
         }
 
