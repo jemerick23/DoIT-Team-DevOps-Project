@@ -1,17 +1,18 @@
 pipeline {
     agent any
 
-    stage('Show Scripts') {
-        steps {
-            bat 'npm run'
-        }
-    }
-
     stages {
+
         stage('Verify Node') {
             steps {
                 bat 'node -v'
                 bat 'npm -v'
+            }
+        }
+
+        stage('Show Scripts') {
+            steps {
+                bat 'npm run'
             }
         }
 
