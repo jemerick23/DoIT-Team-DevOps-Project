@@ -3,10 +3,31 @@
     Initial Development by Justin Emerick
     COM 430 Software Engineering
 */
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --card: #ffffff;
+  --sidebar: #2c3e50;
+  --sidebar-text: white;
+  --accent: #4a90e2;
+  --input-border: #ccc;
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #eaeaea;
+  --card: #1e1e1e;
+  --sidebar: #1b1b1b;
+  --sidebar-text: #eaeaea;
+  --accent: #4a90e2;
+  --input-border: #333;
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #6a93ba;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 /* Canvas Background */
@@ -27,7 +48,8 @@ canvas {
 
     margin: 40px auto;
 
-    background-color: white;
+    background-color: var(--card);
+    color: var(--text);
 
     padding: 30px;
 
@@ -40,12 +62,12 @@ canvas {
 
 h1 {
     text-align: center;
-    color: #0070c0;
+    color: var(--accent);
 }
 
-h2 {
+.task-screen h2 {
     text-align: center;
-    color: #7f7f7f;
+    color: var(--text);
     margin-bottom: 30px;
 }
 
@@ -61,8 +83,10 @@ input,
 textarea,
 select {
     padding: 10px;
-    border: 1px solid lightgray;
+    border: 1px solid var(--input-border);
     font-size: 16px;
+    background-color: var(--card);
+    color: var(--text);
 }
 
 /* Task Description Box */
@@ -75,7 +99,7 @@ textarea {
 /* Create Task Button */
 
 #addTaskButton {
-    background-color: #0070c0;
+    background-color: var(--accent);
     color: white;
 
     border: none;
@@ -114,5 +138,111 @@ textarea {
     border-radius: 8px;
     padding: 15px;
     margin-top: 15px;
-    background-color: white;
+    background-color: var(--card);
+    color: var(--text);
+}
+
+/* Sidebar format */
+.sidebar {
+    width: 55px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--sidebar);
+    color: var(--sidebar-text);
+    overflow: hidden;
+    transition: width 0.3s;
+}
+/* Sidebar .open format */
+.sidebar.open {
+  width: 250px;
+}
+/* Sidebar header format */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 20px 16px;
+}
+/* Sidebar main content h1 format */
+.main-content h1 {
+  font-size: 32px;
+}
+/* Sidebar header h2 format */
+.sidebar-header h2 {
+  font-size: 30px;
+  margin-left: 70px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+}
+/* Sidebar open header h2 format */
+.sidebar.open .sidebar-header h2 {
+  opacity: 1;
+  visibility: visible;
+}
+/* Sidebar open button format */
+.openbtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 34px;
+  cursor: pointer;
+  padding: 0;
+}
+/* Sidebar content format */
+.sidebar-content {
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+  padding: 25px 16px;
+  transition: opacity 0.2s;
+}
+/* Sidebar open content format */
+.sidebar.open .sidebar-content {
+  opacity: 1;
+  visibility: visible;
+}
+/* Sidebar section format */
+.sidebar-section {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 35px 0 15px;
+}
+/* Sidebar a format */
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 0;
+  margin-left: 28px;
+}
+/* Sidebar active format */
+.sidebar a.active {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+/* Sidebar hover format */
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Open button */
+.openbtn {
+    background: none;
+    border: none;
+    color: white;
+    padding: 0;
+    position: fixed;
+    font-size: 34px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+/* Open button format */
+.openbtn:hover {
+    background-color: #34495e;
 }

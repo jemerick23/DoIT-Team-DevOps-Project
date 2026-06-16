@@ -48,3 +48,23 @@ export async function getProfile() {
 
     return res.json();
 }
+
+// FORGOT PASSWORD
+export async function resetPassword(email, password) {
+
+    const response = await fetch(
+        `${BASE_URL}/reset-password`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        }
+    );
+
+    return await response.json();
+}

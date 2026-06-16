@@ -215,7 +215,7 @@ body {
 
 /* Section Headings */
 .settings-container h2 {
-    color: #333;
+    color: var(--text);
     margin-bottom: 15px;
     border-bottom: 2px solid #e0e0e0;
     padding-bottom: 8px;
@@ -227,7 +227,7 @@ body {
     margin-top: 15px;
     margin-bottom: 6px;
     font-weight: bold;
-    color: #555;
+    color: var(--text);
 }
 
 /* Text Inputs and Select Menus */

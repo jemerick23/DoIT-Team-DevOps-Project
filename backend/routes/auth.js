@@ -127,4 +127,51 @@ router.post("/login", (req, res) => {
     });
 });
 
+router.post("/reset-password", async (req, res) => {
+
+    const { email, password } = req.body;
+
+    try {
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const sql =
+            "UPDATE users SET password_hash = ? WHERE email = ?";
+
+        db.query(
+            sql,
+            [hashedPassword, email],
+            (err, result) => {
+
+                if (err) {
+                    return res.status(500).json({
+                        success: false,
+                        message: "Database error"
+                    });
+                }
+
+                if (result.affectedRows === 0) {
+                    return res.status(404).json({
+                        success: false,
+                        message: "Email not found"
+                    });
+                }
+
+                res.json({
+                    success: true,
+                    message: "Password updated successfully"
+                });
+            }
+        );
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+
+    }
+});
+
 module.exports = router;

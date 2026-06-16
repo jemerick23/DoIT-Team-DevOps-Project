@@ -16,7 +16,28 @@
 <body>
 
     <canvas id="myCanvas"></canvas>
-    <script src="../auth/DoIT_canvas.js"></script>
+
+    <!--Sidebar-->
+        <div id="mySidebar" class="sidebar open">
+            <div class="sidebar-header">
+                <button class="openbtn" onclick="toggleSidebar()">☰</button>
+                <h2>DoIT</h2>
+            </div>
+        
+            <div class="sidebar-content">
+                <p class="sidebar-section">Menu</p>
+                <a href="#dashboard" class="active" onclick="window.location.href='../dashboard/DoIT_Dashboard.html'">Dashboard</a>
+                <a href="#calendar" onclick="window.location.href='../calendar/DoIT_calendar.html'">Calendar</a>
+                <a href="#logout" onclick="window.location.href='../auth/DoIT_Login_Screen.html'">Logout</a>
+
+                <p class="sidebar-section">Collaboration</p>
+                <a href="#team-messages" onclick="window.location.href='../teams/DoIT_teamMessages.html'">✉ Team Messages</a>
+                <a href="#view-team-members" onclick="window.location.href='../teams/DoIT_teamMembers.html'">👤 View Team members</a>
+
+                <p class="sidebar-section">Support</p>
+                <a href="#settings" onclick="window.location.href='../settings/DoIT_Settings.html'">⚙ Settings</a>
+            </div>
+        </div>
 
     <!-- Task Management Dashboard -->
     <div id="task-screen">
@@ -62,6 +83,7 @@
 
     </div>
     <script src="../settings/theme.js"></script>
+    <script type="module" src="../dashboard/DoIT_Dashboard.js"></script>
     <script type="module" src="./DoIT_Task_Screen.js"></script>
 
 </body>
