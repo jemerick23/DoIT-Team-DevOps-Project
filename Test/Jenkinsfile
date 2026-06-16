@@ -16,26 +16,13 @@ pipeline {
             }
         }
 
-        stage('Wait for Backend') {
+        stage('Start Backend') {
             steps {
-                bat '''
-                node -e "
-                const http = require('http');
-
-                function check() {
-                    http.get('http://localhost:3000', res => {
-                        process.exit(0);
-                    }).on('error', () => {
-                        setTimeout(check, 1000);
-                    });
-                }
-
-                check();
-                "
-                '''
+                bat 'start /B node backend/server.js'
+                bat 'node -e "setTimeout(() => {}, 5000)"'
             }
         }
-
+        
         stage('Unit Tests') {
             steps {
                 bat 'npm test'
