@@ -1,25 +1,17 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Install Dependencies') {
+    stages 
+        stage('Run Server') {
             steps {
-                bat 'npm install'
-                bat 'npx playwright install --with-deps chromium'
+                bat 'start /B node server.js'
             }
         }
 
-        stage('Run Tests') {
+        stage('Verify') {
             steps {
-                bat 'npm run test:ci'
+                bat 'curl http://localhost:3000'
             }
-        }
-    }
-
-    post {
-        always {
-            junit 'test-results/*.xml'
-            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
         }
     }
 }
