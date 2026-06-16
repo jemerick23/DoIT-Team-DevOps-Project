@@ -22,9 +22,14 @@ app.use((req, res, next) => {
     next();
 });
 
+const path = require("path");
+
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+//static frontend
+app.use("/auth", express.static(path.join(__dirname, "../auth")));
 
 // API Routes
 app.use("/api/auth", authRoutes);
