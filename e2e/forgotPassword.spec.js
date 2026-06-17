@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('successful login redirects to login page', async ({ page }) => {
+test('successful password change redirects to login page', async ({ page }) => {
 
     const email = `test${Date.now()}@example.com`;
 
