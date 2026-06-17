@@ -9,7 +9,7 @@ test('successful login redirects to dashboard page', async ({ page }) => {
     });
 
     await page.fill('#email', 'kbryce@example.com');
-    await page.fill('#password', 'password456#');
+    await page.fill('#password', 'password123#');
 
     await page.click('#loginBtn');
 

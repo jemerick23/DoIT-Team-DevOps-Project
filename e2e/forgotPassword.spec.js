@@ -2,7 +2,6 @@ const { test, expect } = require('@playwright/test');
 
 test('successful password change redirects to login page', async ({ page }) => {
 
-    const email = `test${Date.now()}@example.com`;
 
     await page.goto('http://localhost:3000/auth/DoIT_ForgotPassword_Screen.html', {
         waitUntil: 'domcontentloaded'
