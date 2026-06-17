@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 console.log("AUTH ROUTES LOADED");
 
 router.post("/signup", (req, res) => {
-    const { first_name, last_name, email, password, role_id } = req.body;
+    const { first_name, last_name, email, password, role } = req.body;
 
     if (!first_name || !last_name || !email || !password) {
         return res.status(400).json({ 
@@ -38,12 +38,12 @@ router.post("/signup", (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const insertSql = `
-            INSERT INTO users (first_name, last_name, email, password_hash, role_id)
+            INSERT INTO users (first_name, last_name, email, password_hash, role)
             VALUES (?, ?, ?, ?, ?)
         `;
 
         db.query(insertSql,
-            [first_name, last_name, email, hashedPassword, role_id || null],
+            [first_name, last_name, email, hashedPassword, role || null],
             (err, result) => {
                 if (err) return res.status(500).json(err);
 
@@ -67,7 +67,7 @@ router.post("/login", (req, res) => {
     }
 
     const sql = `
-        SELECT user_id, first_name, last_name, email, password_hash, role_id
+        SELECT user_id, first_name, last_name, email, password_hash, role
         FROM users
         WHERE email = ?
     `;

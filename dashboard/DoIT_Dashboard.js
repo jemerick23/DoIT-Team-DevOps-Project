@@ -1,32 +1,21 @@
 import {initializeDashboardWidgets}
 from "./DoIT_DashboardWidgets.js";
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-        initializeDashboardWidgets();
+    initializeDashboardWidgets();
 
-        const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
-        if (user) {
+    if (user) {
 
-            document.getElementById("userName").textContent =
-                `Welcome: ${user.first_name} ${user.last_name}`;
+        document.getElementById("userName").textContent =
+            `Welcome: ${user.first_name} ${user.last_name}`;
 
-            const roles = {
-                1: "Project Manager",
-                2: "Developer",
-                3: "Database Designer",
-                4: "Tester",
-                5: "Stakeholder"
-            };
-
-            document.getElementById("userOccupation").textContent =
-                `Occupation: ${roles[user.role_id] || "Team Member"}`;
-        }
+        document.getElementById("userOccupation").textContent =
+            user.role || "Not set";
     }
-);
+});
 
 function toggleSidebar() { //<--This allows users to open and close using the toggle button
     console.log("Sidebar clicked");

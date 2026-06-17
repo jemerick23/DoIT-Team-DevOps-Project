@@ -6,7 +6,7 @@ try{
     const first_name = document.getElementById("first_name").value.trim();
     const last_name = document.getElementById("last_name").value.trim();
     const email = document.getElementById("email").value.trim();
-    const role_id = document.getElementById("role").value;
+    const role = document.getElementById("role").value.trim();
     const password = document.getElementById("password").value;
 
     console.log("Signup JS loaded");
@@ -28,7 +28,7 @@ try{
             last_name,
             email,
             password,
-            role_id
+            role
         });
 
         console.log("SIGNUP RESULT:", result);

@@ -40,7 +40,7 @@ function createTaskCard(task) {
     taskCard.innerHTML = `
         <h3>${task.title}</h3>
         <p><strong>Priority:</strong> ${task.priority}</p>
-        <p><strong>Due Date:</strong> ${task.due_Date}</p>
+        <p><strong>Due Date:</strong> ${task.due_date}</p>
         <p>${task.description}</p>
         <button class="deleteTaskButton">Delete Task</button>
     `;

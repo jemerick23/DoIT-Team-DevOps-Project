@@ -30,7 +30,7 @@ router.get("/members/list", (req, res) => {
             r.role_name
         FROM users u
         JOIN roles r
-            ON u.role_id = r.role_id
+            ON u.role = r.role_name
     `;
 
     db.query(sql, (err, result) => {
@@ -48,7 +48,7 @@ router.get("/:id", (req, res) => {
 
     const roleId = parseInt(req.params.id);
 
-    const sql = `SELECT * FROM roles WHERE role_id = ${roleId}`;
+    const sql = "SELECT * FROM roles WHERE role_id = ?";
 
     db.query(sql, [roleId], (err, result) => {
 

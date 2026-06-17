@@ -20,13 +20,10 @@ CREATE TABLE users (
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
-    role_id INT,
+    role VARCHAR(50) NULL,
     account_status VARCHAR(20) DEFAULT 'active',
     last_login TIMESTAMP NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_users_roles
-        FOREIGN KEY (role_id) REFERENCES roles(role_id)
-        ON DELETE SET NULL
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE projects (
@@ -163,11 +160,11 @@ INSERT INTO roles (role_name, description) VALUES
 ('Tester', 'Validates functionality and documents defects.'),
 ('Stakeholder', 'Reviews project progress and provides feedback.');
 
-INSERT INTO users (first_name, last_name, email, password_hash, role_id) VALUES
-('Mathew', 'Goncalves', 'mathew@example.com', '$2b$10$examplehash', 1),
-('Alex', 'Rivera', 'alex@example.com', '$2b$10$examplehash', 2),
-('Jamie', 'Lee', 'jamie@example.com', '$2b$10$examplehash', 3),
-('Taylor', 'Smith', 'taylor@example.com', '$2b$10$examplehash', 4);
+INSERT INTO users (first_name, last_name, email, password_hash, role) VALUES
+('Mathew', 'Goncalves', 'mathew@example.com', '$2b$10$examplehash', 'Project Manager'),
+('Alex', 'Rivera', 'alex@example.com', '$2b$10$examplehash', 'Developer'),
+('Jamie', 'Lee', 'jamie@example.com', '$2b$10$examplehash', 'Database Designer'),
+('Taylor', 'Smith', 'taylor@example.com', '$2b$10$examplehash', 'Tester');
 
 INSERT INTO projects (project_name, description, status, start_date, target_end_date) VALUES
 ('DoIT',
