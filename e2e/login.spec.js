@@ -13,5 +13,5 @@ test('successful login redirects to dashboard page', async ({ page }) => {
 
     await page.click('#loginBtn');
 
-    await expect(page).toHaveURL(/Dashboard\/DoIT_Dashboard\.html/);
+    await expect(page).toHaveURL(/dashboard\/DoIT_Dashboard\.html/);
 });
