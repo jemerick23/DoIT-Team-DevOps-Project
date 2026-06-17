@@ -1,0 +1,18 @@
+const { test, expect } = require('@playwright/test');
+
+test('successful login redirects to login page', async ({ page }) => {
+
+    const email = `test${Date.now()}@example.com`;
+
+    await page.goto('http://localhost:3000/auth/DoIT_ForgotPassword_Screen.html', {
+        waitUntil: 'domcontentloaded'
+    });
+
+    await page.fill('#email', 'kbryce@example.com');
+    await page.fill('#newPassword', 'password456#');
+    await page.fill('#confirmPassword', 'password123#');
+
+    await page.click('#changePasswordBtn');
+
+    await expect(page).toHaveURL(/DoIT_Login_Screen\.html/);
+});
