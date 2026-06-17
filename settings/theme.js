@@ -4,9 +4,13 @@ function applyTheme(theme) {
 }
 
 // Auto-run on EVERY page load
-window.addEventListener("load", async () => {
+document.addEventListener("DOMContentLoaded", async () => {
     console.log("Loading theme...");
-    const userId = 1;
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) return;
+
+    const userId = user.user_id;
 
     try {
         const res = await fetch(`http://localhost:3000/api/settings/${userId}`);

@@ -16,6 +16,14 @@ export async function initializeDashboardWidgets() {
 
 function loadTasks() {
     const taskList = document.getElementById("dashboardTaskList");
+
+    if (!taskList) {
+        console.error(
+            "dashboardTaskList element not found"
+        );
+        return;
+    }
+    
     taskList.innerHTML = "";
 
     if (allTasks.length === 0) {
