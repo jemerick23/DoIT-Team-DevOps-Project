@@ -65,12 +65,19 @@ async function sendMessage() {
 
     try {
 
-        // TEMPORARY USER ID
-        // Replace later if login is added
-        const userId = 1;
+        const user = JSON.parse(
+            localStorage.getItem("user")
+        );
+
+        if (!user) {
+            alert("Please log in first.");
+            window.location.href =
+                "../auth/DoIT_Login_Screen.html";
+            return;
+        }
 
         await createMessage({
-            user_id: userId,
+            user_id: user.user_id,
             message: text
         });
 
@@ -84,5 +91,6 @@ async function sendMessage() {
             "Error sending message:",
             error
         );
+
     }
 }
