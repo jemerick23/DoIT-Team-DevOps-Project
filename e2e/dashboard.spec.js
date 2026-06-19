@@ -10,7 +10,7 @@ await page.goto(
 
 await page.click('a[href="#calendar"]');
 
-await expect(page).toHaveURL(/DoIT_calendar\.html/);
+await expect(page).toHaveURL(/calendar\/DoIT_calendar\.html/);
 
 });
 
@@ -24,7 +24,7 @@ await page.goto(
 
 await page.click('a[href="#tasks"]');
 
-await expect(page).toHaveURL(/DoIT_Task_Screen\.html/);
+await expect(page).toHaveURL(/tasks\/DoIT_Task_Screen\.html/);
 
 
 });
@@ -39,7 +39,7 @@ await page.goto(
 
 await page.click('a[href="#team-messages"]');
 
-await expect(page).toHaveURL(/DoIT_teamMessages\.html/);
+await expect(page).toHaveURL(/teams\/DoIT_teamMessages\.html/);
 
 
 });
@@ -54,7 +54,7 @@ await page.goto(
 
 await page.click('a[href="#view-team-members"]');
 
-await expect(page).toHaveURL(/DoIT_teamMembers\.html/);
+await expect(page).toHaveURL(/teams\/DoIT_teamMembers\.html/);
 
 
 });
@@ -69,7 +69,7 @@ await page.goto(
 
 await page.click('a[href="#settings"]');
 
-await expect(page).toHaveURL(/DoIT_Settings\.html/);
+await expect(page).toHaveURL(/settings\/DoIT_Settings\.html/);
 
 
 });
@@ -84,7 +84,7 @@ await page.goto(
 
 await page.click('a[href="#logout"]');
 
-await expect(page).toHaveURL(/DoIT_Login_Screen\.html/);
+await expect(page).toHaveURL(/auth\/DoIT_Login_Screen\.html/);
 
 
 });
