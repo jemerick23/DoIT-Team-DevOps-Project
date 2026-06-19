@@ -6,8 +6,8 @@
 
 # Test info
 
-- Name: dashboard.spec.js >> team members navigation works
-- Location: dashboard.spec.js:47:1
+- Name: dashboard.spec.js >> AI assistant opens when clicked
+- Location: dashboard.spec.js:107:1
 
 # Error details
 
@@ -21,15 +21,6 @@ Call log:
 # Test source
 
 ```ts
-  1   | const { test, expect } = require('@playwright/test');
-  2   | 
-  3   | test('calendar navigation works', async ({ page }) => {
-  4   | 
-  5   | 
-  6   | await page.goto(
-  7   |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  8   |     { waitUntil: 'domcontentloaded' }
-  9   | );
   10  | 
   11  | await page.click('a[href="#calendar"]');
   12  | 
@@ -70,8 +61,7 @@ Call log:
   47  | test('team members navigation works', async ({ page }) => {
   48  | 
   49  | 
-> 50  | await page.goto(
-      |            ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
+  50  | await page.goto(
   51  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
   52  |     { waitUntil: 'domcontentloaded' }
   53  | );
@@ -131,7 +121,8 @@ Call log:
   107 | test('AI assistant opens when clicked', async ({ page }) => {
   108 | 
   109 | 
-  110 | await page.goto(
+> 110 | await page.goto(
+      |            ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
   111 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
   112 |     { waitUntil: 'domcontentloaded' }
   113 | );
@@ -172,4 +163,64 @@ Call log:
   148 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
   149 |     { waitUntil: 'domcontentloaded' }
   150 | );
+  151 | 
+  152 | await page.fill(
+  153 |     '#assistant-input',
+  154 |     'What tasks are due today?'
+  155 | );
+  156 | 
+  157 | await page.click('#assistant-send');
+  158 | 
+  159 | await expect(
+  160 |     page.locator('#assistant-messages')
+  161 | ).toBeVisible();
+  162 | 
+  163 | 
+  164 | });
+  165 | 
+  166 | test('dashboard task section is displayed', async ({ page }) => {
+  167 | 
+  168 | 
+  169 | await page.goto(
+  170 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+  171 |     { waitUntil: 'domcontentloaded' }
+  172 | );
+  173 | 
+  174 | await expect(
+  175 |     page.locator('#dashboardTaskList')
+  176 | ).toBeVisible();
+  177 | 
+  178 | 
+  179 | });
+  180 | 
+  181 | test('roles section is displayed', async ({ page }) => {
+  182 | 
+  183 | 
+  184 | await page.goto(
+  185 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+  186 |     { waitUntil: 'domcontentloaded' }
+  187 | );
+  188 | 
+  189 | await expect(
+  190 |     page.locator('#roleList')
+  191 | ).toBeVisible();
+  192 | 
+  193 | 
+  194 | });
+  195 | 
+  196 | test('progress section is displayed', async ({ page }) => {
+  197 | 
+  198 | 
+  199 | await page.goto(
+  200 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+  201 |     { waitUntil: 'domcontentloaded' }
+  202 | );
+  203 | 
+  204 | await expect(
+  205 |     page.locator('#progressList')
+  206 | ).toBeVisible();
+  207 | 
+  208 | 
+  209 | });
+  210 | 
 ```

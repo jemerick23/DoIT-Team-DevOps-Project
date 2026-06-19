@@ -6,8 +6,8 @@
 
 # Test info
 
-- Name: dashboard.spec.js >> logout navigation works
-- Location: dashboard.spec.js:77:1
+- Name: dashboard.spec.js >> roles section is displayed
+- Location: dashboard.spec.js:181:1
 
 # Error details
 
@@ -21,90 +21,6 @@ Call log:
 # Test source
 
 ```ts
-  1   | const { test, expect } = require('@playwright/test');
-  2   | 
-  3   | test('calendar navigation works', async ({ page }) => {
-  4   | 
-  5   | 
-  6   | await page.goto(
-  7   |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  8   |     { waitUntil: 'domcontentloaded' }
-  9   | );
-  10  | 
-  11  | await page.click('a[href="#calendar"]');
-  12  | 
-  13  | await expect(page).toHaveURL(/calendar\/DoIT_calendar\.html/);
-  14  | 
-  15  | });
-  16  | 
-  17  | test('tasks navigation works', async ({ page }) => {
-  18  | 
-  19  | 
-  20  | await page.goto(
-  21  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  22  |     { waitUntil: 'domcontentloaded' }
-  23  | );
-  24  | 
-  25  | await page.click('a[href="#tasks"]');
-  26  | 
-  27  | await expect(page).toHaveURL(/tasks\/DoIT_Task_Screen\.html/);
-  28  | 
-  29  | 
-  30  | });
-  31  | 
-  32  | test('team messages navigation works', async ({ page }) => {
-  33  | 
-  34  | 
-  35  | await page.goto(
-  36  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  37  |     { waitUntil: 'domcontentloaded' }
-  38  | );
-  39  | 
-  40  | await page.click('a[href="#team-messages"]');
-  41  | 
-  42  | await expect(page).toHaveURL(/teams\/DoIT_teamMessages\.html/);
-  43  | 
-  44  | 
-  45  | });
-  46  | 
-  47  | test('team members navigation works', async ({ page }) => {
-  48  | 
-  49  | 
-  50  | await page.goto(
-  51  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  52  |     { waitUntil: 'domcontentloaded' }
-  53  | );
-  54  | 
-  55  | await page.click('a[href="#view-team-members"]');
-  56  | 
-  57  | await expect(page).toHaveURL(/teams\/DoIT_teamMembers\.html/);
-  58  | 
-  59  | 
-  60  | });
-  61  | 
-  62  | test('settings navigation works', async ({ page }) => {
-  63  | 
-  64  | 
-  65  | await page.goto(
-  66  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  67  |     { waitUntil: 'domcontentloaded' }
-  68  | );
-  69  | 
-  70  | await page.click('a[href="#settings"]');
-  71  | 
-  72  | await expect(page).toHaveURL(/settings\/DoIT_Settings\.html/);
-  73  | 
-  74  | 
-  75  | });
-  76  | 
-  77  | test('logout navigation works', async ({ page }) => {
-  78  | 
-  79  | 
-> 80  | await page.goto(
-      |            ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
-  81  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  82  |     { waitUntil: 'domcontentloaded' }
-  83  | );
   84  | 
   85  | await page.click('a[href="#logout"]');
   86  | 
@@ -202,4 +118,50 @@ Call log:
   178 | 
   179 | });
   180 | 
+  181 | test('roles section is displayed', async ({ page }) => {
+  182 | 
+  183 | 
+> 184 | await page.goto(
+      |            ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
+  185 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+  186 |     { waitUntil: 'domcontentloaded' }
+  187 | );
+  188 | 
+  189 | await expect(
+  190 |     page.locator('#roleList')
+  191 | ).toBeVisible();
+  192 | 
+  193 | 
+  194 | });
+  195 | 
+  196 | test('progress section is displayed', async ({ page }) => {
+  197 | 
+  198 | 
+  199 | await page.goto(
+  200 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+  201 |     { waitUntil: 'domcontentloaded' }
+  202 | );
+  203 | 
+  204 | await expect(
+  205 |     page.locator('#progressList')
+  206 | ).toBeVisible();
+  207 | 
+  208 | 
+  209 | });
+  210 | 
+  211 | test('welcome header is displayed', async ({ page }) => {
+  212 | 
+  213 | 
+  214 | await page.goto(
+  215 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+  216 |     { waitUntil: 'domcontentloaded' }
+  217 | );
+  218 | 
+  219 | await expect(
+  220 |     page.locator('.welcome')
+  221 | ).toContainText('Dashboard');
+  222 | 
+  223 | 
+  224 | });
+  225 | 
 ```

@@ -6,8 +6,8 @@
 
 # Test info
 
-- Name: dashboard.spec.js >> team members navigation works
-- Location: dashboard.spec.js:47:1
+- Name: dashboard.spec.js >> AI assistant button is visible
+- Location: dashboard.spec.js:92:1
 
 # Error details
 
@@ -70,8 +70,7 @@ Call log:
   47  | test('team members navigation works', async ({ page }) => {
   48  | 
   49  | 
-> 50  | await page.goto(
-      |            ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
+  50  | await page.goto(
   51  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
   52  |     { waitUntil: 'domcontentloaded' }
   53  | );
@@ -116,7 +115,8 @@ Call log:
   92  | test('AI assistant button is visible', async ({ page }) => {
   93  | 
   94  | 
-  95  | await page.goto(
+> 95  | await page.goto(
+      |            ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
   96  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
   97  |     { waitUntil: 'domcontentloaded' }
   98  | );
@@ -172,4 +172,49 @@ Call log:
   148 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
   149 |     { waitUntil: 'domcontentloaded' }
   150 | );
+  151 | 
+  152 | await page.fill(
+  153 |     '#assistant-input',
+  154 |     'What tasks are due today?'
+  155 | );
+  156 | 
+  157 | await page.click('#assistant-send');
+  158 | 
+  159 | await expect(
+  160 |     page.locator('#assistant-messages')
+  161 | ).toBeVisible();
+  162 | 
+  163 | 
+  164 | });
+  165 | 
+  166 | test('dashboard task section is displayed', async ({ page }) => {
+  167 | 
+  168 | 
+  169 | await page.goto(
+  170 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+  171 |     { waitUntil: 'domcontentloaded' }
+  172 | );
+  173 | 
+  174 | await expect(
+  175 |     page.locator('#dashboardTaskList')
+  176 | ).toBeVisible();
+  177 | 
+  178 | 
+  179 | });
+  180 | 
+  181 | test('roles section is displayed', async ({ page }) => {
+  182 | 
+  183 | 
+  184 | await page.goto(
+  185 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+  186 |     { waitUntil: 'domcontentloaded' }
+  187 | );
+  188 | 
+  189 | await expect(
+  190 |     page.locator('#roleList')
+  191 | ).toBeVisible();
+  192 | 
+  193 | 
+  194 | });
+  195 | 
 ```

@@ -12,20 +12,10 @@
 # Error details
 
 ```
-Test timeout of 30000ms exceeded.
-```
-
-```
-Error: page.click: Test timeout of 30000ms exceeded.
+Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
 Call log:
-  - waiting for locator('a[href="#tasks"]')
+  - navigating to "http://localhost:3000/dashboard/DoIT_Dashboard.html", waiting until "domcontentloaded"
 
-```
-
-# Page snapshot
-
-```yaml
-- generic [ref=e2]: Cannot GET /dashboard/DoIT_Dashboard.html
 ```
 
 # Test source
@@ -43,22 +33,22 @@ Call log:
   10  | 
   11  | await page.click('a[href="#calendar"]');
   12  | 
-  13  | await expect(page).toHaveURL(/DoIT_calendar\.html/);
+  13  | await expect(page).toHaveURL(/calendar\/DoIT_calendar\.html/);
   14  | 
   15  | });
   16  | 
   17  | test('tasks navigation works', async ({ page }) => {
   18  | 
   19  | 
-  20  | await page.goto(
+> 20  | await page.goto(
+      |            ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
   21  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
   22  |     { waitUntil: 'domcontentloaded' }
   23  | );
   24  | 
-> 25  | await page.click('a[href="#tasks"]');
-      |            ^ Error: page.click: Test timeout of 30000ms exceeded.
+  25  | await page.click('a[href="#tasks"]');
   26  | 
-  27  | await expect(page).toHaveURL(/DoIT_Task_Screen\.html/);
+  27  | await expect(page).toHaveURL(/tasks\/DoIT_Task_Screen\.html/);
   28  | 
   29  | 
   30  | });
@@ -73,7 +63,7 @@ Call log:
   39  | 
   40  | await page.click('a[href="#team-messages"]');
   41  | 
-  42  | await expect(page).toHaveURL(/DoIT_teamMessages\.html/);
+  42  | await expect(page).toHaveURL(/teams\/DoIT_teamMessages\.html/);
   43  | 
   44  | 
   45  | });
@@ -88,7 +78,7 @@ Call log:
   54  | 
   55  | await page.click('a[href="#view-team-members"]');
   56  | 
-  57  | await expect(page).toHaveURL(/DoIT_teamMembers\.html/);
+  57  | await expect(page).toHaveURL(/teams\/DoIT_teamMembers\.html/);
   58  | 
   59  | 
   60  | });
@@ -103,7 +93,7 @@ Call log:
   69  | 
   70  | await page.click('a[href="#settings"]');
   71  | 
-  72  | await expect(page).toHaveURL(/DoIT_Settings\.html/);
+  72  | await expect(page).toHaveURL(/settings\/DoIT_Settings\.html/);
   73  | 
   74  | 
   75  | });
@@ -118,7 +108,7 @@ Call log:
   84  | 
   85  | await page.click('a[href="#logout"]');
   86  | 
-  87  | await expect(page).toHaveURL(/DoIT_Login_Screen\.html/);
+  87  | await expect(page).toHaveURL(/auth\/DoIT_Login_Screen\.html/);
   88  | 
   89  | 
   90  | });
@@ -152,9 +142,4 @@ Call log:
   118 |     page.locator('#assistant-box')
   119 | ).toBeVisible();
   120 | 
-  121 | 
-  122 | });
-  123 | 
-  124 | test('AI assistant accepts user input', async ({ page }) => {
-  125 | 
 ```
