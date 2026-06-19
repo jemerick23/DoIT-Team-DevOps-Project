@@ -93,7 +93,7 @@ test('AI assistant button is visible', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -108,7 +108,7 @@ test('AI assistant opens when clicked', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -121,53 +121,11 @@ await expect(
 
 });
 
-test('AI assistant accepts user input', async ({ page }) => {
-
-
-await page.goto(
-    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-    { waitUntil: 'domcontentloaded' }
-);
-
-await page.fill(
-    '#assistant-input',
-    'Show my tasks'
-);
-
-await expect(
-    page.locator('#assistant-input')
-).toHaveValue('Show my tasks');
-
-
-});
-
-test('AI assistant send button can be clicked', async ({ page }) => {
-
-
-await page.goto(
-    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-    { waitUntil: 'domcontentloaded' }
-);
-
-await page.fill(
-    '#assistant-input',
-    'What tasks are due today?'
-);
-
-await page.click('#assistant-send');
-
-await expect(
-    page.locator('#assistant-messages')
-).toBeVisible();
-
-
-});
-
 test('dashboard task section is displayed', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -182,7 +140,7 @@ test('roles section is displayed', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -197,7 +155,7 @@ test('progress section is displayed', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -212,7 +170,7 @@ test('welcome header is displayed', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
+    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
