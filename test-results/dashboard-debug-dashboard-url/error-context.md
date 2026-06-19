@@ -6,15 +6,15 @@
 
 # Test info
 
-- Name: dashboard.spec.js >> team messages navigation works
-- Location: dashboard.spec.js:45:1
+- Name: dashboard.spec.js >> debug dashboard url
+- Location: dashboard.spec.js:3:1
 
 # Error details
 
 ```
 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
 Call log:
-  - navigating to "http://localhost:3000/dashboard/DoIT_Dashboard.html", waiting until "domcontentloaded"
+  - navigating to "http://localhost:3000/dashboard/DoIT_Dashboard.html", waiting until "load"
 
 ```
 
@@ -25,7 +25,8 @@ Call log:
   2   | 
   3   | test('debug dashboard url', async ({ page }) => {
   4   | 
-  5   |     await page.goto(
+> 5   |     await page.goto(
+      |                ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
   6   |         'http://localhost:3000/dashboard/DoIT_Dashboard.html'
   7   |     );
   8   | 
@@ -68,8 +69,7 @@ Call log:
   45  | test('team messages navigation works', async ({ page }) => {
   46  | 
   47  | 
-> 48  | await page.goto(
-      |            ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/dashboard/DoIT_Dashboard.html
+  48  | await page.goto(
   49  |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
   50  |     { waitUntil: 'domcontentloaded' }
   51  | );
@@ -127,47 +127,4 @@ Call log:
   103 | });
   104 | 
   105 | test('AI assistant button is visible', async ({ page }) => {
-  106 | 
-  107 | 
-  108 | await page.goto(
-  109 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  110 |     { waitUntil: 'domcontentloaded' }
-  111 | );
-  112 | 
-  113 | await expect(
-  114 |     page.locator('#assistant-btn')
-  115 | ).toBeVisible();
-  116 | 
-  117 | 
-  118 | });
-  119 | 
-  120 | test('AI assistant opens when clicked', async ({ page }) => {
-  121 | 
-  122 | 
-  123 | await page.goto(
-  124 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  125 |     { waitUntil: 'domcontentloaded' }
-  126 | );
-  127 | 
-  128 | await page.click('#assistant-btn');
-  129 | 
-  130 | await expect(
-  131 |     page.locator('#assistant-box')
-  132 | ).toBeVisible();
-  133 | 
-  134 | 
-  135 | });
-  136 | 
-  137 | test('AI assistant accepts user input', async ({ page }) => {
-  138 | 
-  139 | 
-  140 | await page.goto(
-  141 |     'http://localhost:3000/dashboard/DoIT_Dashboard.html',
-  142 |     { waitUntil: 'domcontentloaded' }
-  143 | );
-  144 | 
-  145 | await page.fill(
-  146 |     '#assistant-input',
-  147 |     'Show my tasks'
-  148 | );
 ```

@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('debug dashboard url', async ({ page }) => {
+test.only('debug dashboard url', async ({ page }) => {
 
     await page.goto(
         'http://localhost:3000/dashboard/DoIT_Dashboard.html'
