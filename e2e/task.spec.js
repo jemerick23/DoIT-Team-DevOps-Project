@@ -34,19 +34,19 @@ test('creates and deletes a task', async ({ page }) => {
     );
 
     await expect(
-        page.getByRole('heading', { name: taskTitle })
+        page.getByRole('heading', { name: taskTitle }).first()
     ).toBeVisible();
     await expect(page.getByText(taskDescription)).toBeVisible();
     await expect(page.getByText(taskPriority)).toBeVisible();
     await expect(page.getByText(taskDueDate)).toBeVisible();
 
-    const taskCard = page.locator('.task-card').filter({
-        hasText: taskTitle
-    });
+    const taskCard = page.locator('.task-card')
+        .filter({ hasText: taskTitle })
+        .first();
 
     await taskCard.locator('.deleteTaskButton').click();
 
     await expect(
-        page.getByRole('heading', { name: taskTitle })
-    ).not.toBeVisible();
+        page.locator('.task-card').filter({ hasText: taskTitle }).first()
+    ).toHaveCount(0);
 });
