@@ -13,6 +13,8 @@ test('creates and deletes a task', async ({ page }) => {
     await page.locator('#taskPriority').selectOption(taskPriority);
     await page.locator('#taskDueDate').fill('2025-12-31');
 
+    await page.locator('#addTaskButton').click();
+
     await expect(
         page.getByRole('heading', { name: taskTitle }).first()
     ).toBeVisible();
