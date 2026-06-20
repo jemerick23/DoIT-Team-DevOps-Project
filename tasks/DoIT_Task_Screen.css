@@ -23,19 +23,11 @@
   --accent: #4a90e2;
   --input-border: #333;
 }
-
+/* body format */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--bg);
     color: var(--text);
-}
-
-/* Canvas Background */
-
-canvas {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
 }
 
 /* Main Task Dashboard */
@@ -140,6 +132,33 @@ textarea {
     margin-top: 15px;
     background-color: var(--card);
     color: var(--text);
+}
+
+/* Validation Messages */
+.error-message {
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: #4caf50;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Priority Styling */
+
+.high-priority {
+    border-left: 6px solid red;
+}
+
+.medium-priority {
+    border-left: 6px solid orange;
+}
+
+.low-priority {
+    border-left: 6px solid green;
 }
 
 /* Sidebar format */

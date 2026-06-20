@@ -74,7 +74,7 @@ router.post("/", (req, res) => {
             if (err) {
                 return res.status(500).json(err);
             }
-
+            //Displays message added sucessfully
             res.status(201).json({
                 success: true,
                 message_id: result.insertId,
@@ -112,7 +112,7 @@ router.put("/:id", (req, res) => {
             if (err) {
                 return res.status(500).json(err);
             }
-
+            //Displays message updated sucessfully
             res.json({
                 success: true,
                 message: "Message updated successfully"
@@ -140,7 +140,7 @@ router.delete("/:id", (req, res) => {
                 message: "Message not found"
             });
         }
-
+        //Displays message deleted sucessfully
         res.json({
             success: true,
             message: "Message deleted successfully"

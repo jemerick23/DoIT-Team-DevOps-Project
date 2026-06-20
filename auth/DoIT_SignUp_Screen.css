@@ -1,23 +1,26 @@
+/*body format*/
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #6a93ba;
 }
-
+/*h1 format*/
 h1 {
     text-align: center;
     color: #0070c0;
 }
+/*h2 format*/
 h2 {
     text-align: center;
     color: #0070c0;
     margin-bottom: 30px;
 }
+/*h3 format*/
 h3 {
     text-align: center;
     color: #7f7f7f;
     margin-bottom: 30px;
 }
-
+/*header row format*/
 .header-row {
     text-align: center;
     display: flex;
@@ -31,38 +34,13 @@ h3 {
     font-size: 15px;
     margin-top: 21px;
 }
-
+/*sign in link format*/
 .sign-in-link {
     color: grey;
     display: flex;
     gap: 5px;
 }
-
-.social-signup {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* or left */
-    gap: 20px;
-    margin-top: 50px;
-    margin-right: 20px;
-    color: grey;
-}
-
-.social-links {
-    display: flex;
-    gap: 30px;
-}
-
-.social-links a {
-    text-decoration: none;
-    color: #0070c0;
-    font-weight: bold;
-}
-
-.social-links a:hover {
-    text-decoration: underline;
-}
-
+/*remember container format*/
 .remember-container{
     display: flex;
     align-items: center;
@@ -72,13 +50,13 @@ h3 {
     margin-left: 50px;
     white-space: nowrap;
 }
-
+/*canvas format*/
 canvas {
     position: fixed;
     inset: 0;
     z-index: 0;
 }
-
+/*sign up screen format*/
 #sign-up-screen{
     position: absolute;
     top: 50%;
@@ -86,7 +64,7 @@ canvas {
     transform: translate(-50%, -50%);
     z-index: 1;
 }
-
+/*input format*/
 input {
     margin-left: 23%;
     border: none;
@@ -97,7 +75,7 @@ input {
     display: flex;
     width: 50%;
 }
-
+/*sign up button format*/
 .sign-up-button{
     background-color: #0070c0;
     color: white;
@@ -108,14 +86,14 @@ input {
     margin-bottom: 20px;
     margin-top: 10px;
 }
-
+/*sign up button hover format*/
 .sign-up-button:hover{
     background-color: white;
     color: #0070c0;
     font-weight: bold;
     padding: 15px;
 }
-
+/*button container format*/
 .button-container {
     display: flex;
     flex-direction: row;

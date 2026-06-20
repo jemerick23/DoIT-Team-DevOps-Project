@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+//Authenticate user
 function authenticateUser(req, res, next) {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
@@ -18,6 +19,8 @@ function authenticateUser(req, res, next) {
         catch {res.status(403).json({ message: "Invalid or expired token." });
     }
 }
+
+//Authorize roles
 function authorizeRoles(...roles) {
     return (req, res, next) => {
         if (!roles.includes(req.user.role_id)) {
