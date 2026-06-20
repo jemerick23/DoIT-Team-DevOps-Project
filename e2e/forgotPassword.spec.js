@@ -7,7 +7,7 @@ test('successful password change redirects to login page', async ({ page }) => {
         waitUntil: 'domcontentloaded'
     });
 
-    await page.fill('#email', 'kbryce@example.com');
+    await page.fill('#email', 'jamie@example.com');
     await page.fill('#newPassword', 'password111#');
     await page.fill('#confirmPassword', 'password111#');
 
