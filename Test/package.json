@@ -1,0 +1,24 @@
+{
+  "name": "doit-team-devops-project",
+  "version": "1.0.0",
+  "description": "Team project repository for the DoIT task and project collaboration platform developed for COM 430 Software Engineering.",
+  "main": "index.js",
+  "scripts": {
+    "test:ci": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jemerick23/DoIT-Team-DevOps-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jemerick23/DoIT-Team-DevOps-Project/issues"
+  },
+  "homepage": "https://github.com/jemerick23/DoIT-Team-DevOps-Project#readme",
+  "devDependencies": {
+    "jest": "^30.4.2"
+  }
+}

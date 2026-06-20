@@ -1,0 +1,230 @@
+-- DoIT Project MySQL Database
+-- Import this file into MySQL Workbench, phpMyAdmin, or the MySQL command line.
+--
+-- MySQL command line example:
+-- mysql -u root -p < doit_mysql_schema.sql
+
+DROP DATABASE IF EXISTS doit_project;
+CREATE DATABASE doit_project;
+USE doit_project;
+
+CREATE TABLE roles (
+    role_id INT AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(100) NOT NULL UNIQUE,
+    description TEXT
+);
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    role_id INT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_users_roles
+        FOREIGN KEY (role_id) REFERENCES roles(role_id)
+        ON DELETE SET NULL
+);
+
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_name VARCHAR(150) NOT NULL UNIQUE,
+    description TEXT,
+    status VARCHAR(50) NOT NULL DEFAULT 'Planning',
+    start_date DATE,
+    target_end_date DATE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sprints (
+    sprint_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    sprint_name VARCHAR(150) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    goal TEXT,
+    status VARCHAR(50) NOT NULL DEFAULT 'Planned',
+    CONSTRAINT fk_sprints_projects
+        FOREIGN KEY (project_id) REFERENCES projects(project_id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE tasks (
+    task_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    sprint_id INT,
+    assigned_to INT,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    priority VARCHAR(50) NOT NULL DEFAULT 'Medium',
+    status VARCHAR(50) NOT NULL DEFAULT 'Backlog',
+    story_points INT,
+    due_date DATE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT NULL,
+    CONSTRAINT fk_tasks_projects
+        FOREIGN KEY (project_id) REFERENCES projects(project_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_tasks_sprints
+        FOREIGN KEY (sprint_id) REFERENCES sprints(sprint_id)
+        ON DELETE SET NULL,
+    CONSTRAINT fk_tasks_users
+        FOREIGN KEY (assigned_to) REFERENCES users(user_id)
+        ON DELETE SET NULL
+);
+
+CREATE TABLE agile_poker_sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    sprint_id INT,
+    session_name VARCHAR(150) NOT NULL,
+    session_date DATE NOT NULL,
+    notes TEXT,
+    CONSTRAINT fk_poker_sessions_projects
+        FOREIGN KEY (project_id) REFERENCES projects(project_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_poker_sessions_sprints
+        FOREIGN KEY (sprint_id) REFERENCES sprints(sprint_id)
+        ON DELETE SET NULL
+);
+
+CREATE TABLE agile_poker_votes (
+    vote_id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id INT NOT NULL,
+    task_id INT NOT NULL,
+    user_id INT NOT NULL,
+    estimate_value INT NOT NULL,
+    comments TEXT,
+    voted_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_votes_sessions
+        FOREIGN KEY (session_id) REFERENCES agile_poker_sessions(session_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_votes_tasks
+        FOREIGN KEY (task_id) REFERENCES tasks(task_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_votes_users
+        FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE meeting_notes (
+    note_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    meeting_date DATE NOT NULL,
+    topic VARCHAR(200) NOT NULL,
+    attendees TEXT,
+    decisions TEXT,
+    action_items TEXT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_meeting_notes_projects
+        FOREIGN KEY (project_id) REFERENCES projects(project_id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE audit_log (
+    audit_id INT AUTO_INCREMENT PRIMARY KEY,
+    table_name VARCHAR(100) NOT NULL,
+    record_id INT NOT NULL,
+    action VARCHAR(50) NOT NULL,
+    changed_by INT,
+    change_summary TEXT,
+    changed_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_audit_users
+        FOREIGN KEY (changed_by) REFERENCES users(user_id)
+        ON DELETE SET NULL
+);
+
+INSERT INTO roles (role_name, description) VALUES
+('Project Manager', 'Coordinates project work, timelines, and team communication.'),
+('Developer', 'Builds and maintains application features.'),
+('Database Designer', 'Designs database schema and data relationships.'),
+('Tester', 'Validates functionality and documents defects.'),
+('Stakeholder', 'Reviews project progress and provides feedback.');
+
+INSERT INTO users (first_name, last_name, email, role_id) VALUES
+('Mathew', 'Goncalves', 'mathew@example.com', 1),
+('Alex', 'Rivera', 'alex@example.com', 2),
+('Jamie', 'Lee', 'jamie@example.com', 3),
+('Taylor', 'Smith', 'taylor@example.com', 4);
+
+INSERT INTO projects (project_name, description, status, start_date, target_end_date) VALUES
+('DoIT',
+ 'A DevOps project management application for tracking tasks, agile estimates, sprints, and meeting notes.',
+ 'Planning',
+ CURDATE(),
+ NULL);
+
+INSERT INTO sprints (project_id, sprint_name, start_date, end_date, goal, status) VALUES
+(1,
+ 'Sprint 1',
+ CURDATE(),
+ DATE_ADD(CURDATE(), INTERVAL 14 DAY),
+ 'Create database, define core features, and prepare DevOps submission artifacts.',
+ 'Planned');
+
+INSERT INTO tasks
+(project_id, sprint_id, assigned_to, title, description, priority, status, story_points, due_date)
+VALUES
+(1, 1, 3, 'Create database schema', 'Design MySQL tables and relationships.', 'High', 'In Progress', 5, DATE_ADD(CURDATE(), INTERVAL 2 DAY)),
+(1, 1, 2, 'Build user login workflow', 'Create a basic user authentication flow.', 'Medium', 'Backlog', 8, DATE_ADD(CURDATE(), INTERVAL 7 DAY)),
+(1, 1, 1, 'Create agile poker printout', 'Document planning poker estimates for the DevOps report.', 'High', 'Backlog', 3, DATE_ADD(CURDATE(), INTERVAL 3 DAY)),
+(1, 1, 4, 'Write meeting notes', 'Record project meeting decisions and action items.', 'Medium', 'Backlog', 2, DATE_ADD(CURDATE(), INTERVAL 4 DAY)),
+(1, 1, 2, 'Create infrastructure diagram', 'Prepare infrastructure/topology model for the project report.', 'High', 'Backlog', 5, DATE_ADD(CURDATE(), INTERVAL 5 DAY));
+
+INSERT INTO agile_poker_sessions
+(project_id, sprint_id, session_name, session_date, notes)
+VALUES
+(1,
+ 1,
+ 'Initial Agile Poker Session',
+ CURDATE(),
+ 'Initial estimates for project setup, database design, and DevOps report deliverables.');
+
+INSERT INTO agile_poker_votes
+(session_id, task_id, user_id, estimate_value, comments)
+VALUES
+(1, 1, 1, 5, 'Schema is straightforward but requires relationships.'),
+(1, 1, 2, 5, 'Normal database setup effort.'),
+(1, 2, 1, 8, 'Login workflow has more complexity.'),
+(1, 3, 1, 3, 'Agile poker printout is mostly documentation.'),
+(1, 5, 2, 5, 'Diagram requires coordination with the report.');
+
+INSERT INTO meeting_notes
+(project_id, meeting_date, topic, attendees, decisions, action_items)
+VALUES
+(1,
+ CURDATE(),
+ 'DoIT Project Kickoff',
+ 'Mathew, Alex, Jamie, Taylor',
+ 'Team agreed to use MySQL for the deployable database version and SQLite for the lightweight prototype.',
+ 'Create schema; add sample data; prepare agile poker estimate section.');
+
+INSERT INTO audit_log
+(table_name, record_id, action, changed_by, change_summary)
+VALUES
+('projects', 1, 'CREATE', 1, 'Initial DoIT project record created.'),
+('tasks', 1, 'CREATE', 1, 'Initial database schema task created.');
+
+-- Useful report query: all project tasks with assigned users
+SELECT 
+    t.task_id,
+    t.title,
+    t.priority,
+    t.status,
+    t.story_points,
+    CONCAT(u.first_name, ' ', u.last_name) AS assigned_to,
+    s.sprint_name
+FROM tasks t
+LEFT JOIN users u ON t.assigned_to = u.user_id
+LEFT JOIN sprints s ON t.sprint_id = s.sprint_id
+ORDER BY t.task_id;
+
+-- Useful report query: agile poker average estimates by task
+SELECT
+    t.title,
+    ROUND(AVG(v.estimate_value), 2) AS average_estimate,
+    COUNT(v.vote_id) AS vote_count
+FROM tasks t
+LEFT JOIN agile_poker_votes v ON t.task_id = v.task_id
+GROUP BY t.task_id, t.title
+ORDER BY t.task_id;
