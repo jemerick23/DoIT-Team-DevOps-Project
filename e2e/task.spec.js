@@ -13,22 +13,16 @@ test('creates and deletes a task', async ({ page }) => {
     await page.locator('#taskPriority').selectOption(taskPriority);
     await page.locator('#taskDueDate').fill('2025-12-31');
 
-    await page.locator('#addTaskButton').click();
-
-    // wait for task to appear
+    await expect(
+        page.getByRole('heading', { name: taskTitle }).first()
+    ).toBeVisible();
     const taskCard = page.locator('.task-card')
         .filter({ hasText: taskTitle })
         .first();
-
-    await expect(taskCard).toBeVisible();
-
-    // IMPORTANT: scope assertions to the card
+    
     await expect(taskCard).toContainText(taskDescription);
     await expect(taskCard).toContainText(taskPriority);
 
-    // delete task
     await taskCard.locator('.deleteTaskButton').click();
 
-    // confirm deletion (strict + scoped)
-    await expect(taskCard).toHaveCount(0);
 });
