@@ -33,7 +33,9 @@ test('creates and deletes a task', async ({ page }) => {
         await page.locator('#taskList').innerHTML()
     );
 
-    await expect(page.getByText(taskTitle)).toBeVisible();
+    await expect(
+        page.getByRole('heading', { name: taskTitle })
+    ).toBeVisible();
     await expect(page.getByText(taskDescription)).toBeVisible();
     await expect(page.getByText(taskPriority)).toBeVisible();
     await expect(page.getByText(taskDueDate)).toBeVisible();
@@ -44,5 +46,7 @@ test('creates and deletes a task', async ({ page }) => {
 
     await taskCard.locator('.deleteTaskButton').click();
 
-    await expect(page.getByText(taskTitle)).not.toBeVisible();
+    await expect(
+        page.getByRole('heading', { name: taskTitle })
+    ).not.toBeVisible();
 });
