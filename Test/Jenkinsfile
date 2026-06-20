@@ -29,6 +29,13 @@ pipeline {
             }
         }
 
+        stage('Start Frontend') {
+            steps {
+                bat 'start /B npx http-server . -p 5500'
+                bat 'node -e "setTimeout(() => {}, 5000)"'
+            }
+        }
+
         stage('E2E Tests') {
             steps {
                 bat 'npm run test:e2e'
