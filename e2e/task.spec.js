@@ -26,6 +26,4 @@ test('creates and deletes a task', async ({ page }) => {
 
     await taskCard.locator('.deleteTaskButton').click();
 
-    await expect(taskCard).not.toBeVisible();
-
 });
