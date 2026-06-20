@@ -8,8 +8,8 @@ test('successful login redirects to dashboard page', async ({ page }) => {
         waitUntil: 'domcontentloaded'
     });
 
-    await page.fill('#email', 'kbryce@example.com');
-    await page.fill('#password', 'password123#');
+    await page.fill('#email', 'wjohnson@example.com');
+    await page.fill('#password', 'password123$');
 
     await page.click('#loginBtn');
 
