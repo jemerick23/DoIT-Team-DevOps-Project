@@ -4,7 +4,7 @@ test('calendar navigation works', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -18,7 +18,7 @@ test('tasks navigation works', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -33,7 +33,7 @@ test('team messages navigation works', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -48,7 +48,7 @@ test('team members navigation works', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -63,7 +63,7 @@ test('settings navigation works', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -78,7 +78,7 @@ test('logout navigation works', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -93,7 +93,7 @@ test('AI assistant button is visible', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -108,7 +108,7 @@ test('AI assistant opens when clicked', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -125,7 +125,7 @@ test('dashboard task section is displayed', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -140,7 +140,7 @@ test('roles section is displayed', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -155,7 +155,7 @@ test('progress section is displayed', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 
@@ -170,7 +170,7 @@ test('welcome header is displayed', async ({ page }) => {
 
 
 await page.goto(
-    'http://localhost:5500/dashboard/DoIT_Dashboard.html',
+    'http://localhost:3000/dashboard/DoIT_Dashboard.html',
     { waitUntil: 'domcontentloaded' }
 );
 

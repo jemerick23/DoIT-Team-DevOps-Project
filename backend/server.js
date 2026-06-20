@@ -30,6 +30,7 @@ app.use(express.json());
 
 //static frontend
 app.use("/auth", express.static(path.join(__dirname, "../auth")));
+app.use("/dashboard", express.static(path.join(__dirname, "../dashboard")));
 
 // API Routes
 app.use("/api/auth", authRoutes);
