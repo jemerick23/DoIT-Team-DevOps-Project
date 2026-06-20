@@ -31,6 +31,10 @@ app.use(express.json());
 //static frontend
 app.use("/auth", express.static(path.join(__dirname, "../auth")));
 app.use("/dashboard", express.static(path.join(__dirname, "../dashboard")));
+app.use("/tasks", express.static(path.join(__dirname, "../tasks")));
+app.use("/teams", express.static(path.join(__dirname, "../teams")));
+app.use("/settings", express.static(path.join(__dirname, "../settings")));
+app.use("/calendar", express.static(path.join(__dirname, "../calendar")));
 
 // API Routes
 app.use("/api/auth", authRoutes);

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node backend/server.js",
-    "test:e2e": "playwright test forgotPassword.spec.js"
+    "test:e2e": "playwright test dashboard.spec.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",

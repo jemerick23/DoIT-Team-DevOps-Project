@@ -106,50 +106,61 @@ assistantBtn.addEventListener("click",()=>{
 // assistant brain
  
 function getReply(message){
- 
- 
+
     let text = message.toLowerCase();
- 
- 
+
+
+   
+    let foundTasks = tasks.filter(task =>
+        text.includes(task.name.toLowerCase()) ||
+        task.name.toLowerCase().split(" ").some(word => text.includes(word))
+    );
+
+
+   
     if(text.includes("task")){
- 
- 
-        let reply = "Here are your current tasks:\n\n";
- 
- 
-        tasks.forEach((task,index)=>{
- 
- 
-            reply += 
-            `${index+1}. ${task.name} - ${task.status} (${task.priority} priority)\n`;
- 
+
+        let reply = "I checked your workspace and found your current tasks:\n\n";
+
+        tasks.forEach((task, i)=>{
+            reply += `• ${task.name} (${task.status}, ${task.priority} priority)\n`;
         });
- 
- 
+
+        reply += "\nLet me know if you want details on any specific task.";
+
         return reply;
- 
- 
     }
- 
- 
+
+
+    
+    if(foundTasks.length > 0){
+
+        let task = foundTasks[0];
+
+        return `I found something related to your request:\n\n` +
+               `Task: ${task.name}\n` +
+               `Status: ${task.status}\n` +
+               `Priority: ${task.priority}\n\n` +
+               `You can ask me to show updates or related tasks if needed.`;
+    }
+
+
+  
+    if(text.includes("project")){
+
+        return "Based on your DoIT dashboard, your project is currently active. You can track progress in the Project Progress section. I can also break down tasks if you want.";
+    }
+
+
+    
     if(text.includes("hello") || text.includes("hi")){
- 
- 
-        return "Hey 👋 I can help you with tasks, schedules, and productivity.";
- 
+
+        return "Hey 👋 I’m your DoIT assistant. I can help you track tasks, project progress, and team activity. What do you need?";
     }
- 
- 
-    if(text.includes("deadline")){
- 
- 
-        return "You can review upcoming deadlines by checking your task list.";
- 
-    }
- 
- 
-    return "I can help you find tasks, deadlines, and project information.";
- 
+
+
+    
+    return "I’m not fully sure, but I can check your tasks or project data if you guide me a bit more.";
 }
  
 function sendMessage(){
