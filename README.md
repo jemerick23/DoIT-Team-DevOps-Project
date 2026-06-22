@@ -68,6 +68,8 @@ Import the provided database file (DoIT_mySQL_database.sql) into mySQL Workbench
 
 You can also copy and paste all file contents into the workbench.
 
+After all contents are added into mySQL Workbench, run the entire database.
+
 This will create all required tables and sample data.
 
 5. Create a .env file inside the backend folder.
@@ -81,7 +83,7 @@ This will create all required tables and sample data.
     DB_NAME=doit_project
     JWT_SECRET=doit_super_secret_key
 
-    Change the placeholder values with your local configuration.
+    Change the placeholder values with your local configuration. (For JWT_SECRET, add: doit_super_secret_key).
 
 6. Start the Application
 
