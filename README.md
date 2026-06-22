@@ -95,6 +95,16 @@ This will create all required tables and sample data.
 
     In VSCode, you can click on Go Live on the bottom right corner of your screen.
 
+8. Create an account in DoIT
+
+   Once on the log in screen, click on the sign up button to create your account.
+   Once all fields are filled out, click on the sign up button.
+
+9. Log in
+
+   Once your account is created, you can now log into DoIT with your credentials.
+   After logging in, the dashboard will be displayed.
+
 # Technologies Used
 
 # Frontend
