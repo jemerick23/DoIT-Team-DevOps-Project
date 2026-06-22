@@ -1,4 +1,4 @@
-import {
+import { //Imports all functions from API
     getMessages,
     createMessage,
     updateMessage,
@@ -52,7 +52,7 @@ async function loadMessages() {
     }
 }
 
-// Create Message
+// Send Message
 
 async function sendMessage() {
 

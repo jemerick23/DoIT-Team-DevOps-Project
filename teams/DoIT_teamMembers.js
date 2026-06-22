@@ -2,7 +2,7 @@ import { fetchTeamMembers }
 from "./DoIT_teamMembersAPI.js";
 
 let teamMembers = [];
-
+//Initializes team members
 export async function initializeteamMembers() {
 
     console.log("INIT TEAM MEMBERS RAN");

@@ -1,4 +1,4 @@
-export async function fetchTeamMembers() {
+export async function fetchTeamMembers() { //Gets team members from database
 
   try {
         const response = await fetch(

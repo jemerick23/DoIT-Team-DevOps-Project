@@ -225,18 +225,18 @@ body {
     margin-bottom: 15px;
 }
 
-
+/*Message container formatting */
 .message-container{
   width: 350px;
   height: 350px;
   margin-left: 300px;
 }
-
+/*Message input formatting */
 .messageInput {
   width: 350px;
   height: 350px;
 }
-
+/*Send message button formatting */
 .sendMessageBtn {
   color:#2c3e50;
   padding: 5px;
@@ -293,7 +293,7 @@ body {
   padding: 10px;
   overflow-y: auto;
 }
-
+/* .bot formatting */
 .bot {
   background: #2a2a2a;
   padding: 8px;
@@ -396,11 +396,11 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
-
+/* Send Message button hover formatting */
 #sendMessageBtn:hover {
   background-color: #34495e;
 }
-
+/* Message card formatting */
 .message-card {
   padding: 20px;
   margin-bottom: 15px;
@@ -409,16 +409,16 @@ body {
   border-left: 4px solid var(--accent);
   border-radius: 6px;
 }
-
+/* Message card strong formatting */
 .message-card strong {
   display: block;
   margin-bottom: 6px;
 }
-
+/* Message card p formatting */
 .message-card p {
   margin: 5px 0;
 }
-
+/* Message card small formatting */
 .message-card small {
   color: var(--muted-text);
 }

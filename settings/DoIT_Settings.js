@@ -1,4 +1,4 @@
-function applyTheme(theme) {
+function applyTheme(theme) { //Apply theme function
   document.documentElement.setAttribute("data-theme", theme);
 }
 

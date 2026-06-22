@@ -12,7 +12,10 @@
   --button-hover: #005a9e;
   --close-btn: #d1d9e6;
   --close-btn-hover: #b0b9c9;
+  --sidebar: #2c3e50;
+  --sidebar-text: #ffffff;
 }
+
 /* DARK MODE */
 :root[data-theme="dark"] {
   --bg: #121212;
@@ -36,6 +39,110 @@ body {
   padding: 0;
   background: var(--bg);
   color: var(--text);
+}
+/* Sidebar format */
+.sidebar {
+    width: 55px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--sidebar);
+    color: var(--sidebar-text);
+    overflow: hidden;
+    transition: width 0.3s;
+}
+/* Sidebar .open format */
+.sidebar.open {
+  width: 250px;
+}
+/* Sidebar header format */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 20px 16px;
+}
+/* Sidebar main content h1 format */
+.main-content h1 {
+  font-size: 32px;
+}
+/* Sidebar header h2 format */
+.sidebar-header h2 {
+  font-size: 30px;
+  margin-left: 70px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+}
+/* Sidebar open header h2 format */
+.sidebar.open .sidebar-header h2 {
+  opacity: 1;
+  visibility: visible;
+}
+/* Sidebar open button format */
+.openbtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 34px;
+  cursor: pointer;
+  padding: 0;
+}
+/* Sidebar content format */
+.sidebar-content {
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+  padding: 25px 16px;
+  transition: opacity 0.2s;
+}
+/* Sidebar open content format */
+.sidebar.open .sidebar-content {
+  opacity: 1;
+  visibility: visible;
+}
+/* Sidebar section format */
+.sidebar-section {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 35px 0 15px;
+}
+/* Sidebar a format */
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 0;
+  margin-left: 28px;
+}
+/* Sidebar active format */
+.sidebar a.active {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+/* Sidebar hover format */
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Open button */
+.openbtn {
+    background: none;
+    border: none;
+    color: white;
+    padding: 0;
+    position: fixed;
+    font-size: 34px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+/* Open button format */
+.openbtn:hover {
+    background-color: #34495e;
 }
 /* Calendar container format */
 .calendar-container {

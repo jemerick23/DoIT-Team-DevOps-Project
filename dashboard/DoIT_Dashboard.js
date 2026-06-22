@@ -2,7 +2,7 @@ import {initializeDashboardWidgets}
 from "./DoIT_DashboardWidgets.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-
+//Displays dashboard widgets
     initializeDashboardWidgets();
 
     loadTasks();

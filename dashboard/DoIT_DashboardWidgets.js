@@ -42,7 +42,7 @@ function loadTasks() {
         taskList.appendChild(div);
     });
 }
-
+//Render roles
 function renderRoleBoard() {
     const container = document.getElementById("roleList");
     
@@ -78,7 +78,7 @@ function renderRoleBoard() {
         container.appendChild(section);
     });
 }
-
+//Render status 
 function renderStatusBoard() {
     const container = document.getElementById("progressList");
 

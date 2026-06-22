@@ -42,8 +42,9 @@
                     <span class="circle-profile-picture"></span>
                 </div>
             </div>
-
+            <!--Settings container-->
             <div class="settings-container">
+                <!--General settings (contains theme options and notifications)-->
                 <h2>General Settings</h2>
                 <br>
                 <label for="theme">Theme:</label>
@@ -59,16 +60,20 @@
                 </select>
                 <br>
                 <br>
+                <!--Profile settings-->
                 <h2>Profile Settings</h2>
+                <!--Profile name-->
                 <label for="first_name">First Name:</label>
                 <input id="first_name" type="text" placeholder="Enter your first name">
                 <br>
                 <label for="last_name">Last Name:</label>
                 <input id="last_name" type="text" placeholder="Enter your last name">
                 <br>
+                <!--Occupation-->
                 <label for="role">Occupation:</label>
                 <input id="role" type="text" placeholder="Enter your occupation">
                 <br>
+                <!--Privacy settings-->
                 <h2>Privacy settings</h2>
                 <input type="checkbox" id="allow-tracking" name="allow-tracking" value="allow-tracking">
                 <label for="allow-tracking">Allow tracking</label>
@@ -78,6 +83,7 @@
                 <label for="data-sharing">Allow data sharing</label>
                 <p>I agree to allow my account information and project data to be shared with authorized team members for collaboration purposes.</p>
                 <br>
+                <!--Save settings-->
                 <button id="saveBtn">Save Settings</button>
                 <div class="message" id="message"></div>
             </div>

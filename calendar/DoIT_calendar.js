@@ -1,3 +1,5 @@
+//This shows the calendar feature
+
 const calendarGrid = document.getElementById('calendarGrid');
 const monthYear = document.getElementById('monthYear');
 const prevMonth = document.getElementById('prevMonth');
@@ -15,18 +17,18 @@ const state = {
 };
 
 const tasks = JSON.parse(localStorage.getItem('doitCalendarTasks') || '{}');
-
+//Saves tasks
 function saveTasks() {
     localStorage.setItem('doitCalendarTasks', JSON.stringify(tasks));
 }
-
+//Date formatting
 function formatDateKey(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
-
+//Renders calendar
 function renderCalendar() {
     calendarGrid.innerHTML = '';
     const year = state.currentDate.getFullYear();
@@ -37,13 +39,13 @@ function renderCalendar() {
     const daysInMonth = lastDay.getDate();
 
     monthYear.textContent = firstDay.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-
+//Creates empty cells
 for (let empty = 0; empty < startWeekDay; empty += 1) {
     const emptyCell = document.createElement('div');
     emptyCell.className = 'day-cell inactive';
     calendarGrid.appendChild(emptyCell);
     }
-
+//Days in month
 for (let day = 1; day <= daysInMonth; day += 1) {
     const date = new Date(year, month, day);
     const dateKey = formatDateKey(date);
@@ -58,7 +60,7 @@ for (let day = 1; day <= daysInMonth; day += 1) {
     calendarGrid.appendChild(cell);
     }
 }
-
+//Opens task panel
 function openTaskPanel(dateKey) {
     state.selectedKey = dateKey;
     taskDateTitle.textContent = `Tasks for ${dateKey}`;
@@ -67,7 +69,7 @@ function openTaskPanel(dateKey) {
     taskPanel.classList.add('active');
     taskInput.focus();
 }
-
+//Renders task list
 function renderTaskList() {
     taskList.innerHTML = '';
     const list = tasks[state.selectedKey] || [];
@@ -89,7 +91,7 @@ list.forEach((task, index) => {
     taskList.appendChild(item);
     });
 }
-
+//Add task function
 function addTask() {
     const value = taskInput.value.trim();
     if (!value || !state.selectedKey) return;
@@ -103,7 +105,7 @@ function addTask() {
     taskInput.value = '';
     taskInput.focus();
 }
-
+//Remove task function
 function removeTask(index) {
     if (!state.selectedKey || !tasks[state.selectedKey]) return;
     tasks[state.selectedKey].splice(index, 1);
@@ -114,7 +116,7 @@ function removeTask(index) {
     renderTaskList();
     renderCalendar();
 }
-
+//Event listeners
 prevMonth.addEventListener('click', () => {
     state.currentDate.setMonth(state.currentDate.getMonth() - 1);
     renderCalendar();
