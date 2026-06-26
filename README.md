@@ -68,6 +68,8 @@ Import the provided database file (DoIT_mySQL_database.sql) into mySQL Workbench
 
 You can also copy and paste all file contents into the workbench.
 
+After all contents are added into mySQL Workbench, run the entire database.
+
 This will create all required tables and sample data.
 
 5. Create a .env file inside the backend folder.
@@ -81,7 +83,7 @@ This will create all required tables and sample data.
     DB_NAME=doit_project
     JWT_SECRET=doit_super_secret_key
 
-    Change the placeholder values with your local configuration.
+    Change the placeholder values with your local configuration. (For JWT_SECRET, add: doit_super_secret_key).
 
 6. Start the Application
 
@@ -94,6 +96,16 @@ This will create all required tables and sample data.
     Open the frontend in your browser (live browser) and access the application.
 
     In VSCode, you can click on Go Live on the bottom right corner of your screen.
+
+8. Create an account in DoIT
+
+   Once on the log in screen, click on the sign up button to create your account.
+   Once all fields are filled out, click on the sign up button.
+
+9. Log in
+
+   Once your account is created, you can now log into DoIT with your credentials.
+   After logging in, the dashboard will be displayed.
 
 # Technologies Used
 
